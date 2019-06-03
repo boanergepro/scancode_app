@@ -8,14 +8,35 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: Icon(Icons.insert_emoticon),
-        title: Text('ScanCode'),
+        body: Container(
+      child: Column(
+        children: <Widget>[
+          Expanded(
+            flex: 2,
+            child: Container(
+                color: Theme.of(context).primaryColor,
+                child: Center(
+                  child: Text(
+                    '//ScanCode',
+                    style: TextStyle(
+                      fontFamily: 'BalooDa',
+                      fontSize: 35,
+                      color: Colors.white,
+                    ),
+                  ),
+                )),
+          ),
+          Expanded(
+            flex: 3,
+            child: Container(
+              color: Colors.white,
+            ),
+          )
+        ],
       ),
-    );
+    ));
   }
 }
