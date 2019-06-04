@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:scancode_app/src/models/user.dart';
 import 'package:scancode_app/src/screens/home_screen.dart';
 import 'package:scancode_app/src/widgets/custom_textfield.dart';
-import 'package:http/http.dart' as http;
+import 'package:scancode_app/src/services/fetch_data_user.dart';
+
 import 'dart:convert';
 
 import 'package:scancode_app/src/widgets/loading_overlay.dart';
@@ -144,14 +145,10 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() {
       _loadingOverlay = true;
     });
-    final response = await http.get(
-        'https://codetrace.com/api/users/login/${_usernameController.text}');
-    print('https://codetrace.com/api/users/login/${_usernameController.text}');
-
+    var response = await fetchDataUser(_usernameController.text);
+    User user = User.fromJson(json.decode(response.body));
     if (response.statusCode == 200) {
       print(response.body);
-      // If the call to the server was successful, parse the JSON
-      User user = User.fromJson(json.decode(response.body));
       setState(() {
         _loadingOverlay = false;
       });
@@ -169,7 +166,8 @@ class _LoginScreenState extends State<LoginScreen> {
       });
       _scaffoldKey.currentState.showSnackBar(
         SnackBar(
-          content: Text('Error! Por favor verifique el nobre de usurio o su conexion a internet'),
+          content: Text(
+              'Error! Por favor verifique el nobre de usurio o su conexion a internet'),
         ),
       );
       throw Exception('Failed to load User');
