@@ -9,6 +9,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  TextEditingController _usernameController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,56 +42,60 @@ class _LoginScreenState extends State<LoginScreen> {
                     flex: 1,
                   ),
                   Expanded(
-                      flex: 4,
-                      child: Row(
-                        children: <Widget>[
-                          Spacer(
-                            flex: 2,
-                          ),
-                          Expanded(
-                            flex: 8,
-                            child: Column(
-                              children: <Widget>[
-                                // Texxfiel
-                                Expanded(
-                                  flex: 3,
-                                  child: customTextField(
-                                    labelText: 'username',
-                                    prefixIcon: Icons.alternate_email,
-                                  ),
+                    flex: 4,
+                    child: Row(
+                      children: <Widget>[
+                        Spacer(
+                          flex: 2,
+                        ),
+                        Expanded(
+                          flex: 8,
+                          child: Column(
+                            children: <Widget>[
+                              // Texxfiel
+                              Expanded(
+                                flex: 3,
+                                child: customTextField(
+                                  autofocus: true,
+                                  controller: _usernameController,
+                                  labelText: 'username',
+                                  prefixIcon: Icons.alternate_email,
                                 ),
-                                Spacer(
-                                  flex: 1,
-                                ),
-                                Expanded(
-                                  flex: 5,
-                                  child: Container(
-                                    child: Text(
-                                      'Ingresa tu username y descubre como el mundo podria ver lo que te define "Tu codigo" ',
-                                      textAlign: TextAlign.justify,
-                                      style: TextStyle(
-                                        fontFamily: 'BalooDa',
-                                        fontSize: 15,
-                                        color: Colors.grey,
-                                      ),
+                              ),
+                              Spacer(
+                                flex: 1,
+                              ),
+                              Expanded(
+                                flex: 5,
+                                child: Container(
+                                  child: Text(
+                                    'Ingresa tu username y descubre como el mundo podria ver lo que te define "Tu codigo" ',
+                                    textAlign: TextAlign.justify,
+                                    style: TextStyle(
+                                      fontFamily: 'BalooDa',
+                                      fontSize: 15,
+                                      color: Colors.grey,
                                     ),
                                   ),
-                                )
-                              ],
-                            ),
+                                ),
+                              )
+                            ],
                           ),
-                          Spacer(
-                            flex: 2,
-                          ),
-                        ],
-                      )),
+                        ),
+                        Spacer(
+                          flex: 2,
+                        ),
+                      ],
+                    ),
+                  ),
                   Spacer(
                     flex: 1,
                   ),
                   Expanded(
                     flex: 1,
                     child: Container(
-                      //color: Theme.of(context).primaryColor,
+                      width: double.infinity,
+                      color: Theme.of(context).primaryColor,
                       child: RaisedButton(
                         onPressed: () {},
                         child: Text(
