@@ -19,10 +19,10 @@ Widget customTextField({
       contentPadding: EdgeInsets.all(8),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.only(
-          bottomRight: Radius.circular(18),
-          topRight: Radius.circular(18),
-          bottomLeft: Radius.circular(18),
-          topLeft: Radius.circular(18),
+          bottomRight: Radius.circular(5),
+          topRight: Radius.circular(5),
+          bottomLeft: Radius.circular(5),
+          topLeft: Radius.circular(5),
         ),
       ),
       labelText: labelText,
