@@ -1,37 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:scancode_app/src/models/user.dart';
+import 'package:provider/provider.dart';
+import 'package:scancode_app/src/providers/user.dart';
 
-class HomeScreen extends StatefulWidget {
-  User currentUser;
-  HomeScreen({this.currentUser});
+class HomeScreen extends StatelessWidget {
+  static String routerName = '/home';
 
-  @override
-  _HomeScreenState createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
   @override
   Widget build(BuildContext context) {
+    final userState = Provider.of<UserProvider>(context);
+
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            flex: 2,
-            child: Image.network(widget.currentUser.avatarUrl),
-          ),
-          Expanded(
-            flex: 4,
-            child: Container(
-              child: Center(child: Text(widget.currentUser.name),),
-            ),
-          )
-        ],
-      )
+      body: Container(
+        child: Text(userState.user.name),
+      ),
     );
   }
 }

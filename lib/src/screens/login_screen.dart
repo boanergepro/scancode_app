@@ -1,27 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:scancode_app/src/models/user.dart';
 import 'package:scancode_app/src/screens/home_screen.dart';
 import 'package:scancode_app/src/widgets/custom_textfield.dart';
-import 'package:scancode_app/src/services/fetch_data_user.dart';
-
-import 'dart:convert';
-
+import 'package:provider/provider.dart';
+import 'package:scancode_app/src/providers/user.dart';
+import 'package:scancode_app/src/providers/app.dart';
 import 'package:scancode_app/src/widgets/loading_overlay.dart';
 
-class LoginScreen extends StatefulWidget {
-  static String routerName = '/';
-
-  @override
-  _LoginScreenState createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
+class LoginScreen extends StatelessWidget {
+  static final routerName = '/';
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  TextEditingController _usernameController = TextEditingController();
-  bool _loadingOverlay = false;
+  final TextEditingController _usernameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final appState = Provider.of<AppProvider>(context);
+    final userState = Provider.of<UserProvider>(context);
+
     return Scaffold(
       key: _scaffoldKey,
       body: Stack(
@@ -110,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             color: Theme.of(context).primaryColor,
                             child: RaisedButton(
                               onPressed: () {
-                                _handleLogin();
+                                _handleLogin(context, appState, userState);
                               },
                               child: Text(
                                 'Buscar',
@@ -134,36 +128,24 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           LoadingOverlay(
-            loading: _loadingOverlay,
+            loading: appState.loadingOverlay,
           )
         ],
       ),
     );
   }
 
-  void _handleLogin() async {
-    setState(() {
-      _loadingOverlay = true;
-    });
-    var response = await fetchDataUser(_usernameController.text);
-    User user = User.fromJson(json.decode(response.body));
-    if (response.statusCode == 200) {
-      print(response.body);
-      setState(() {
-        _loadingOverlay = false;
-      });
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => HomeScreen(
-                currentUser: user,
-              ),
-        ),
-      );
+  void _handleLogin(context, AppProvider appState, UserProvider userState) async {
+    appState.loadingOverlay = true;
+
+    var responseCode = await userState.loadDataUser(_usernameController.text);
+
+    if (responseCode == 200) {
+      appState.loadingOverlay = false;
+      Navigator.pushNamed(context, HomeScreen.routerName);
+
     } else {
-      setState(() {
-        _loadingOverlay = false;
-      });
+      appState.loadingOverlay = false;
       _scaffoldKey.currentState.showSnackBar(
         SnackBar(
           content: Text(
