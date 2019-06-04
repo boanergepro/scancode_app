@@ -8,12 +8,15 @@ Widget customTextField({
   int maxLines,
   Function onTap,
   bool obscureText: false,
+  bool autofocus: false,
 }){
   return TextField(
+
+    autofocus: autofocus,
     obscureText: obscureText,
     onTap: onTap,
     maxLines: maxLines,
-    cursorColor: Colors.red,
+    cursorColor: Colors.purple,
     keyboardType: keyboardType,
     decoration: InputDecoration(
       contentPadding: EdgeInsets.all(8),
