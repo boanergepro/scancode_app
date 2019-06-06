@@ -12,6 +12,7 @@ class User {
   int _activeMonthCount;
   List<Map<String, dynamic>> _externalOrganizations;
   String _jobTitle;
+  List<String> _badges;
 
   // Constructor
   User.fromJson(Map<String, dynamic> json) {
@@ -28,6 +29,7 @@ class User {
     _activeMonthCount = json['activeMonthCount'] ?? 0;
     _externalOrganizations = List<Map<String, dynamic>>.from(json['externalOrganizations']);
     _jobTitle = json['jobTitle'] ?? '';
+    _badges = json['badges'];
   }
 
   // Getter
@@ -45,10 +47,11 @@ class User {
   int get activeMonthCount => _activeMonthCount;
   List<Map<String, dynamic>> get externalOrganizations => _externalOrganizations;
   String get jobTitle => _jobTitle;
+  List<String> get badges => _badges;
 
   //Methods
   String _getLevel() {
-    int _total = int.parse(_experience['total']);
+    int _total = _experience['total'];
     if (_total < 200) {
       return 'Novice';
     } else if (_total >= 200 && _total < 400) {
