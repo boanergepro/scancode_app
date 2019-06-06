@@ -22,5 +22,4 @@ flutter:
       fonts:
         - asset: assets/fonts/BalooDa-Regular.ttf
   assets:
-    - assets/img/code.jpg
     - assets/img/profile.jpg
