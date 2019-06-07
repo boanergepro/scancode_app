@@ -45,7 +45,7 @@ Widget homeHeader(UserProvider userState) {
                       ),
                       Spacer(flex: 1),
                       Expanded(
-                        flex: 10,
+                        flex: 8,
                         child: Text(
                           userState.user.biography,
                           overflow: TextOverflow.visible,
