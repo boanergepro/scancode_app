@@ -12,7 +12,7 @@ class User {
   int _activeMonthCount;
   List<Map<String, dynamic>> _externalOrganizations;
   String _jobTitle;
-  List<String> _badges;
+  List<dynamic> _badges;
 
   // Constructor
   User.fromJson(Map<String, dynamic> json) {
@@ -47,7 +47,7 @@ class User {
   int get activeMonthCount => _activeMonthCount;
   List<Map<String, dynamic>> get externalOrganizations => _externalOrganizations;
   String get jobTitle => _jobTitle;
-  List<String> get badges => _badges;
+  List<dynamic> get badges => _badges;
 
   //Methods
   String _getLevel() {
