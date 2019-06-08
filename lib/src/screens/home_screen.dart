@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:scancode_app/src/widgets/drawer.dart';
 import 'package:scancode_app/src/widgets/home_header.dart';
 import 'package:scancode_app/src/providers/user.dart';
 import 'package:scancode_app/src/widgets/item_list_badges.dart';
@@ -35,7 +36,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-      drawer: Drawer(),
+      drawer: drawer(context),
       body: Container(
         height: _screenHeight,
         width: _screenWidth,
