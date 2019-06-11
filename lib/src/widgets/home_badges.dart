@@ -46,7 +46,6 @@ Widget homeBadges(UserProvider userState) {
           },
         ),
       ),
-      Divider(),
     ],
   );
 }

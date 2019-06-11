@@ -4,6 +4,7 @@ import 'package:scancode_app/src/widgets/drawer.dart';
 import 'package:scancode_app/src/widgets/home_header.dart';
 import 'package:scancode_app/src/providers/user.dart';
 import 'package:scancode_app/src/widgets/home_badges.dart';
+import 'package:scancode_app/src/widgets/home_languages.dart';
 
 class HomeScreen extends StatelessWidget {
   static String routerName = '/home';
@@ -42,6 +43,7 @@ class HomeScreen extends StatelessWidget {
         width: _screenWidth,
         child: CustomScrollView(
           slivers: <Widget>[
+            // Section header
             SliverList(
               delegate: SliverChildListDelegate(
                 <Widget>[
@@ -59,6 +61,7 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
+            // Section badges
             SliverList(
               delegate: SliverChildListDelegate(
                 <Widget>[
@@ -66,9 +69,21 @@ class HomeScreen extends StatelessWidget {
                     height: _screenHeight / 5,
                     child: homeBadges(userState),
                   ),
+                  Divider(),
                 ],
               ),
             ),
+            SliverList(
+              delegate: SliverChildListDelegate(
+                <Widget>[
+                  Container(
+                    height: _screenHeight / 5,
+                    child: homeLanguages(userState),
+                  ),
+                  Divider(),
+                ]
+              ),
+            )
           ],
         ),
       ),
