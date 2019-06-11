@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scancode_app/src/custom_theme.dart';
+import 'package:scancode_app/src/providers/leader.dart';
 import 'package:scancode_app/src/providers/user.dart';
 import 'package:scancode_app/src/providers/app.dart';
 import 'package:scancode_app/src/routes.dart';
@@ -10,7 +11,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(providers: [
       ChangeNotifierProvider(builder: (context) => UserProvider()),
-      ChangeNotifierProvider(builder: (context) => AppProvider(),),
+      ChangeNotifierProvider(builder: (context) => AppProvider()),
+      ChangeNotifierProvider(builder: (context) => LeaderProvider()),
     ],
       child: MaterialApp(
         theme: customTheme,
