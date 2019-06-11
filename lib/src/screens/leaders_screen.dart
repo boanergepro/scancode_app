@@ -10,6 +10,9 @@ class LeadersScreen extends StatelessWidget {
     final leaderState = Provider.of<LeaderProvider>(context);
 
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Leaders'),
+      ),
       body: ListView.builder(
         itemCount: leaderState.leaders.length,
         itemBuilder: (context, int index) {
@@ -24,15 +27,15 @@ class LeadersScreen extends StatelessWidget {
                       Text(''),
                       Row(
                         children: <Widget>[
-                          Spacer(),
+                          Spacer(flex: 3),
                           CircleAvatar(radius: 15,
                           backgroundColor: Colors.purple[200],
-                            child: Text(ranking(index),style: TextStyle(
+                            child: Text('${index+1}',style: TextStyle(
                               fontFamily: 'BalooDa',
                               color: Colors.white,
                             )),
                           ),
-                          Spacer(),
+                          Spacer(flex: 3),
                           Container(
                             height: 100,
                             width: 100,
@@ -117,10 +120,6 @@ class LeadersScreen extends StatelessWidget {
         },
       ),
     );
-  }
-   String ranking(int ranking){
-    int num = ranking+1;
-    return num.toString();
   }
 
   String _getLevel(int param) {
