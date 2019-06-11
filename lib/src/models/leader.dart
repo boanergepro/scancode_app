@@ -1,7 +1,3 @@
-import 'package:scancode_app/src/providers/leader.dart';
-import 'package:http/http.dart' as http;
-import 'package:scancode_app/src/api/end_points.dart';
-
 class Leader {
   String _id;
   String _name;
