@@ -9,7 +9,7 @@ import 'package:scancode_app/src/widgets/home_languages.dart';
 import 'package:scancode_app/src/widgets/loading_overlay.dart';
 
 class HomeScreen extends StatelessWidget {
-  static String routerName = '/home';
+  static final routerName = '/home';
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override

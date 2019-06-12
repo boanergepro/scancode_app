@@ -5,7 +5,7 @@ import 'package:scancode_app/src/screens/leaders_screen.dart';
 import 'package:scancode_app/src/providers/leader.dart';
 import 'package:scancode_app/src/screens/login_screen.dart';
 import 'package:scancode_app/src/screens/home_screen.dart';
-
+import 'package:scancode_app/src/screens/projects_screen.dart';
 
 Widget drawer(BuildContext context) {
   final leadersState = Provider.of<LeaderProvider>(context);
@@ -73,7 +73,7 @@ Widget drawer(BuildContext context) {
             ),
           ),
           onTap: () {
-
+            Navigator.pushNamed(context, ProjectsScreen.routerName);
           },
         ),
         Divider(),
