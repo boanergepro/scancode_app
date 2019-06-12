@@ -3,8 +3,10 @@ import 'package:provider/provider.dart';
 import 'package:scancode_app/src/widgets/drawer.dart';
 import 'package:scancode_app/src/widgets/home_header.dart';
 import 'package:scancode_app/src/providers/user.dart';
+import 'package:scancode_app/src/providers/app.dart';
 import 'package:scancode_app/src/widgets/home_badges.dart';
 import 'package:scancode_app/src/widgets/home_languages.dart';
+import 'package:scancode_app/src/widgets/loading_overlay.dart';
 
 class HomeScreen extends StatelessWidget {
   static String routerName = '/home';
@@ -15,6 +17,7 @@ class HomeScreen extends StatelessWidget {
     double _screenHeight = MediaQuery.of(context).size.height;
     double _screenWidth = MediaQuery.of(context).size.width;
     final userState = Provider.of<UserProvider>(context);
+    final appState = Provider.of<AppProvider>(context);
 
     return Scaffold(
       key: _scaffoldKey,
@@ -38,54 +41,59 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       drawer: drawer(context),
-      body: Container(
-        height: _screenHeight,
-        width: _screenWidth,
-        child: CustomScrollView(
-          slivers: <Widget>[
-            // Section header
-            SliverList(
-              delegate: SliverChildListDelegate(
-                <Widget>[
-                  Container(
-                    height: _screenHeight / 2.5,
-                    child: Column(
-                      children: <Widget>[
-                        Expanded(
-                          flex: 3,
-                          child: homeHeader(userState),
+      body: Stack(
+        children: <Widget>[
+          Container(
+            height: _screenHeight,
+            width: _screenWidth,
+            child: CustomScrollView(
+              slivers: <Widget>[
+                // Section header
+                SliverList(
+                  delegate: SliverChildListDelegate(
+                    <Widget>[
+                      Container(
+                        height: _screenHeight / 2.5,
+                        child: Column(
+                          children: <Widget>[
+                            Expanded(
+                              flex: 3,
+                              child: homeHeader(userState),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+                // Section badges
+                SliverList(
+                  delegate: SliverChildListDelegate(
+                    <Widget>[
+                      Container(
+                        height: _screenHeight / 5,
+                        child: homeBadges(userState),
+                      ),
+                      Divider(),
+                    ],
+                  ),
+                ),
+                SliverList(
+                  delegate: SliverChildListDelegate(
+                      <Widget>[
+                        Container(
+                          height: _screenHeight / 5,
+                          child: homeLanguages(userState),
+                        ),
+                        Divider(),
+                      ]
+                  ),
+                )
+              ],
             ),
-            // Section badges
-            SliverList(
-              delegate: SliverChildListDelegate(
-                <Widget>[
-                  Container(
-                    height: _screenHeight / 5,
-                    child: homeBadges(userState),
-                  ),
-                  Divider(),
-                ],
-              ),
-            ),
-            SliverList(
-              delegate: SliverChildListDelegate(
-                <Widget>[
-                  Container(
-                    height: _screenHeight / 5,
-                    child: homeLanguages(userState),
-                  ),
-                  Divider(),
-                ]
-              ),
-            )
-          ],
-        ),
+          ),
+          LoadingOverlay(loading: appState.loadingOverlay,),
+        ],
       ),
     );
   }
