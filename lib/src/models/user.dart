@@ -1,3 +1,5 @@
+import 'package:scancode_app/src/models/repository.dart';
+
 class User {
   String _name;
   String _username;
@@ -13,6 +15,7 @@ class User {
   List<Map<String, dynamic>> _externalOrganizations;
   String _jobTitle;
   List<dynamic> _badges;
+  List<Repository> _repositories;
 
   // Constructor
   User.fromJson(Map<String, dynamic> json) {
@@ -27,26 +30,45 @@ class User {
     _realRepositoryCount = json['realRepositoryCount'];
     _languages = List<Map<String, dynamic>>.from(json['languages']);
     _activeMonthCount = json['activeMonthCount'] ?? 0;
-    _externalOrganizations = List<Map<String, dynamic>>.from(json['externalOrganizations']);
+    _externalOrganizations =
+        List<Map<String, dynamic>>.from(json['externalOrganizations']);
     _jobTitle = json['jobTitle'] ?? '';
     _badges = json['badges'];
+    _repositories = List<Map<String, dynamic>>.from(json['repositories'])
+        .map((repo) => Repository.fromJson(repo))
+        .toList();
   }
 
   // Getter
   String get name => _name;
+
   String get username => _username;
+
   String get avatarUrl => _avatarUrl;
+
   String get company => _company;
+
   String get location => _location;
+
   String get url => _url;
+
   String get biography => _biography;
+
   Map<String, dynamic> get experience => _experience;
+
   String get level => _getLevel();
+
   int get repositoryCount => _realRepositoryCount;
+
   List<Map<String, dynamic>> get languages => _languages;
+
   int get activeMonthCount => _activeMonthCount;
-  List<Map<String, dynamic>> get externalOrganizations => _externalOrganizations;
+
+  List<Map<String, dynamic>> get externalOrganizations =>
+      _externalOrganizations;
+
   String get jobTitle => _jobTitle;
+
   List<dynamic> get badges => _badges;
 
   //Methods
