@@ -13,7 +13,10 @@ dependencies:
   http:  0.12.0+2
   flutter_spinkit: ^3.1.0
   provider: 2.0.1+1
-  flutter_svg: 0.12.4+2
+  flutter_svg:
+    git:
+      url: https://github.com/boanergepro/flutter_svg.git
+      ref: 0.12.4
 
 flutter:
 
@@ -22,5 +25,3 @@ flutter:
     - family: BalooDa
       fonts:
         - asset: assets/fonts/BalooDa-Regular.ttf
-  assets:
-    - assets/img/profile.jpg

@@ -3,7 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:scancode_app/src/widgets/drawer.dart';
 import 'package:scancode_app/src/widgets/home_header.dart';
 import 'package:scancode_app/src/providers/user.dart';
-import 'package:scancode_app/src/widgets/item_list_badges.dart';
+import 'package:scancode_app/src/widgets/home_badges.dart';
+import 'package:scancode_app/src/widgets/home_languages.dart';
 
 class HomeScreen extends StatelessWidget {
   static String routerName = '/home';
@@ -42,6 +43,7 @@ class HomeScreen extends StatelessWidget {
         width: _screenWidth,
         child: CustomScrollView(
           slivers: <Widget>[
+            // Section header
             SliverList(
               delegate: SliverChildListDelegate(
                 <Widget>[
@@ -59,60 +61,29 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
+            // Section badges
             SliverList(
               delegate: SliverChildListDelegate(
                 <Widget>[
                   Container(
                     height: _screenHeight / 5,
-                    child: Column(
-                      children: <Widget>[
-                        Flexible(
-                          flex: 2,
-                          child: Row(
-                            children: <Widget>[
-                              Spacer(
-                                flex: 1,
-                              ),
-                              Expanded(
-                                flex: 15,
-                                child: Text(
-                                  'Overview',
-                                  style: TextStyle(
-                                    fontFamily: 'BalooDa',
-                                    fontSize: 18,
-                                    color: Colors.black87,
-                                  ),
-                                ),
-                              ),
-                              Spacer(
-                                flex: 1,
-                              )
-                            ],
-                          ),
-                        ),
-                        //List Badges
-                        Expanded(
-                          flex: 6,
-                          child: LayoutBuilder(
-                            builder: (context, constraints) {
-                              return Container(
-                                child: ListView.builder(
-                                  scrollDirection: Axis.horizontal,
-                                  itemCount: userState.user.badges.length,
-                                  itemBuilder: (context, index) {
-                                    return itemListBadges(constraints, userState, index);
-                                  },
-                                ),
-                              );
-                            },
-                          ),
-                        )
-                      ],
-                    ),
+                    child: homeBadges(userState),
                   ),
+                  Divider(),
                 ],
               ),
             ),
+            SliverList(
+              delegate: SliverChildListDelegate(
+                <Widget>[
+                  Container(
+                    height: _screenHeight / 5,
+                    child: homeLanguages(userState),
+                  ),
+                  Divider(),
+                ]
+              ),
+            )
           ],
         ),
       ),
