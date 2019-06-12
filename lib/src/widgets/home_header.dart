@@ -59,7 +59,7 @@ Widget homeHeader(UserProvider userState) {
                         flex: 8,
                         child: Text(
                           userState.user.biography,
-                          overflow: TextOverflow.visible,
+                          overflow: TextOverflow.fade,
                           textScaleFactor: 0.8,
                           style: TextStyle(
                             fontFamily: 'BalooDa',
@@ -128,7 +128,7 @@ Widget homeHeader(UserProvider userState) {
                         Expanded(
                           flex: 3,
                           child: Text(
-                            'Pathfinder',
+                            userState.user.level,
                             textScaleFactor: 0.8,
                             style: TextStyle(
                               fontFamily: 'BalooDa',
@@ -168,7 +168,7 @@ Widget homeHeader(UserProvider userState) {
           ),
         ),
         Expanded(
-          flex: 3,
+          flex: 2,
           child: Container(
             child: Row(
               children: <Widget>[

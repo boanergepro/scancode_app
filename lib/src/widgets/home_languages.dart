@@ -39,7 +39,7 @@ Widget homeLanguages(UserProvider userState) {
                 scrollDirection: Axis.horizontal,
                 itemCount: userState.user.languages.length,
                 itemBuilder: (context, index) {
-                  return itemListLanguages(constraints, userState, index);
+                  return itemListLanguages(context, constraints, userState, index);
                 },
               ),
             );
