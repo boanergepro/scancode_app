@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scancode_app/src/providers/user.dart';
 
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-
 Widget homeHeader(UserProvider userState) {
   return Container(
     color: Colors.purple,
