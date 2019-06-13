@@ -71,6 +71,8 @@ class User {
 
   List<dynamic> get badges => _badges;
 
+  List<Repository> get repositories => _repositories;
+
   //Methods
   String _getLevel() {
     int _total = _experience['total'];
