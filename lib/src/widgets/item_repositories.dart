@@ -22,7 +22,7 @@ Widget itemRepositories(
               flex: 1,
             ),
             Expanded(
-              flex: 8,
+              flex: 12,
               child: Container(
                 child: Column(
                   children: <Widget>[
@@ -41,11 +41,9 @@ Widget itemRepositories(
                                       placeholderBuilder:
                                           (BuildContext context) =>
                                               new Container(
-                                                padding:
-                                                    const EdgeInsets.all(30.0),
                                                 child: Center(
                                                   child: SpinKitCubeGrid(
-                                                    size: 20,
+                                                    size: 10,
                                                     color: Theme.of(context)
                                                         .primaryColor,
                                                   ),
@@ -262,25 +260,22 @@ Widget itemRepositories(
                       child: LayoutBuilder(
                         builder: (context, constraints) {
                           return GridView.count(
+                            physics: ScrollPhysics(),
                             crossAxisCount: 5,
-                            mainAxisSpacing: 8,
                             crossAxisSpacing: 13,
                             children: List.generate(userState.user.repositories[index].languages.length, (indexx) {
                               return Container(
                                 margin: EdgeInsets.only(left: 10, right: 10),
                                 width: constraints.maxHeight / 1,
                                 height: constraints.maxHeight / 1,
-                                //  '$URL_LANGUAGES${userState.user.languages[index]['name']}.svg',
                                 child: SvgPicture.network(
                                   '$URL_LANGUAGES${userState.user.repositories[index].languages[indexx]['name']}.svg',
                                   placeholderBuilder:
                                       (BuildContext context) =>
                                   new Container(
-                                    padding: const EdgeInsets.all(
-                                        30.0),
                                     child:
                                     Center(
-                                      child: SpinKitCubeGrid (
+                                      child: SpinKitCubeGrid(
                                         size: 20,
                                         color: Theme.of(context).primaryColor,
                                       ),
