@@ -4,6 +4,7 @@ import 'package:scancode_app/src/api/end_points.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:scancode_app/src/widgets/bottom_sheet_repository.dart';
+import 'package:scancode_app/src/widgets/cache_svg_picture.dart';
 
 Widget itemRepositories(
     BuildContext context, UserProvider userState, int index) {
@@ -16,7 +17,7 @@ Widget itemRepositories(
     ),
     child: InkWell(
       onTap: () {
-        showBottomSheetLanguages(context, userState,index);
+        showBottomSheetLanguages(context, userState, index);
       },
       child: Card(
         child: Container(
@@ -59,8 +60,8 @@ Widget itemRepositories(
                                   : Container(
                                       decoration: BoxDecoration(
                                         image: DecorationImage(
-                                          image: NetworkImage(userState
-                                              .user.repositories[index].imageUrl),
+                                          image: NetworkImage(userState.user
+                                              .repositories[index].imageUrl),
                                         ),
                                       ),
                                     ),
@@ -71,7 +72,8 @@ Widget itemRepositories(
                               child: Text(
                                 userState.user.repositories[index].private
                                     ? 'A private repository'
-                                    : userState.user.repositories[index].fullName,
+                                    : userState
+                                        .user.repositories[index].fullName,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                   fontFamily: 'BalooDa',
@@ -208,8 +210,8 @@ Widget itemRepositories(
                                     Expanded(
                                       flex: 5,
                                       child: Text(
-                                        userState
-                                            .user.repositories[index].familiarity
+                                        userState.user.repositories[index]
+                                            .familiarity
                                             .toString(),
                                         style: TextStyle(
                                           fontFamily: 'BalooDa',
@@ -224,7 +226,8 @@ Widget itemRepositories(
                               flex: 1,
                             ),
                             //Comment Coverage
-                            userState.user.repositories[index].commentCoverage !=
+                            userState.user.repositories[index]
+                                        .commentCoverage !=
                                     0
                                 ? Expanded(
                                     flex: 6,
@@ -261,38 +264,29 @@ Widget itemRepositories(
                         ),
                       ),
                       Expanded(
-                        flex: 8,
-                        child: LayoutBuilder(
-                          builder: (context, constraints) {
-                            return GridView.count(
-                              physics: ScrollPhysics(),
-                              crossAxisCount: 5,
-                              crossAxisSpacing: 13,
-                              children: List.generate(userState.user.repositories[index].languages.length, (indexx) {
-                                return Container(
-                                  margin: EdgeInsets.only(left: 10, right: 10),
-                                  width: constraints.maxHeight / 1,
-                                  height: constraints.maxHeight / 1,
-                                  child: SvgPicture.network(
-                                    '$URL_LANGUAGES${userState.user.repositories[index].languages[indexx]['name']}.svg',
-                                    placeholderBuilder:
-                                        (BuildContext context) =>
-                                    new Container(
-                                      child:
-                                      Center(
-                                        child: SpinKitCubeGrid(
-                                          size: 20,
-                                          color: Theme.of(context).primaryColor,
-                                        ),
-                                      ),
+                          flex: 8,
+                          child: LayoutBuilder(
+                            builder: (context, constraints) {
+                              return GridView.count(
+                                physics: ScrollPhysics(),
+                                crossAxisCount: 5,
+                                crossAxisSpacing: 13,
+                                children: List.generate(
+                                    userState.user.repositories[index].languages
+                                        .length, (indexx) {
+                                  return Container(
+                                    margin:
+                                        EdgeInsets.only(left: 10, right: 10),
+                                    width: constraints.maxHeight / 1,
+                                    height: constraints.maxHeight / 1,
+                                    child: CacheSvgPicture(
+                                      '$URL_LANGUAGES${userState.user.repositories[index].languages[indexx]['name']}.svg',
                                     ),
-                                  ),
-                                );
-                              }),
-                            );
-                          },
-                        )
-                      ),
+                                  );
+                                }),
+                              );
+                            },
+                          )),
                     ],
                   ),
                 ),
