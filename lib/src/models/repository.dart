@@ -10,6 +10,7 @@ class Repository {
   int _familiarity;
   int _contributorActiveMonthCount;
   List<Map<String, dynamic>> _languages;
+  bool _private;
 
   // Constructor
   Repository.fromJson(Map<String, dynamic> json) {
@@ -24,6 +25,7 @@ class Repository {
     _familiarity = json['familiarity'] ?? 0;
     _contributorActiveMonthCount = json['contributorActiveMonthCount'] ?? 0;
     _languages = List<Map<String, dynamic>>.from(json['languages']);
+    _private = json['private'] ?? false;
   }
 
   // Getter
@@ -38,4 +40,5 @@ class Repository {
   int get familiarity => _familiarity;
   int get contributorActiveMonthCount => _contributorActiveMonthCount;
   List<Map<String, dynamic>> get languages => _languages;
+  bool get private => _private;
 }
