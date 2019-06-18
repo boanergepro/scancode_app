@@ -2,6 +2,15 @@ import 'package:flutter/material.dart';
 
 List<DropdownMenuItem> listLanguageCode = [
   DropdownMenuItem(
+    child: Text('All languages',
+        style: TextStyle(
+          fontFamily: 'BalooDa',
+          fontSize: 15,
+          color: Colors.black,
+        )),
+    value: null,
+  ),
+  DropdownMenuItem(
     child: Text('C',style: TextStyle(
       fontFamily: 'BalooDa',
       fontSize: 15,

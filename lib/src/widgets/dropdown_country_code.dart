@@ -2,6 +2,15 @@ import 'package:flutter/material.dart';
 
 List<DropdownMenuItem> listCountryCode = [
   DropdownMenuItem(
+    child: Text('All countries',
+        style: TextStyle(
+          fontFamily: 'BalooDa',
+          fontSize: 15,
+          color: Colors.black,
+        )),
+    value: null,
+  ),
+  DropdownMenuItem(
     child: Text('Argentina',
         style: TextStyle(
           fontFamily: 'BalooDa',
