@@ -19,7 +19,7 @@ List<DropdownMenuItem> listLanguageCode = [
     value: 'c',
   ),
   DropdownMenuItem(
-    child: Text('C##',style: TextStyle(
+    child: Text('C#',style: TextStyle(
       fontFamily: 'BalooDa',
       fontSize: 15,
       color: Colors.black,
