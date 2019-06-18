@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:scancode_app/src/providers/user.dart';
 import 'package:scancode_app/src/api/end_points.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:scancode_app/src/utils/capitalize.dart';
+import 'package:scancode_app/src/widgets/cache_svg_picture.dart';
 
 Widget itemLanguagesDetailProject(UserProvider userState, int index, int i) {
   // [int index]  => referencing al item project
@@ -12,16 +11,8 @@ Widget itemLanguagesDetailProject(UserProvider userState, int index, int i) {
     leading: CircleAvatar(
       backgroundColor: Colors.transparent,
       child: Container(
-        child: SvgPicture.network(
+        child: CacheSvgPicture(
           '$URL_LANGUAGES${userState.user.repositories[index].languages[i]['name']}.svg',
-          placeholderBuilder: (BuildContext context) => new Container(
-                child: Center(
-                  child: SpinKitCubeGrid(
-                    size: 20,
-                    color: Theme.of(context).primaryColor,
-                  ),
-                ),
-              ),
         ),
       ),
     ),
@@ -63,7 +54,7 @@ Widget itemLanguagesDetailProject(UserProvider userState, int index, int i) {
                 Expanded(
                   flex: 3,
                   child: Text(
-                    userState.user.languages[index]['additionCount'].toString(),
+                    userState.user.repositories[index].languages[i]['additionCount'].toString(),
                     style: TextStyle(
                       fontFamily: 'BalooDa',
                       fontSize: 16,
@@ -100,7 +91,7 @@ Widget itemLanguagesDetailProject(UserProvider userState, int index, int i) {
                 Expanded(
                   flex: 3,
                   child: Text(
-                    userState.user.languages[index]['deletionCount'].toString(),
+                    userState.user.repositories[index].languages[i]['deletionCount'].toString(),
                     style: TextStyle(
                       fontFamily: 'BalooDa',
                       fontSize: 16,
@@ -137,7 +128,7 @@ Widget itemLanguagesDetailProject(UserProvider userState, int index, int i) {
                 Expanded(
                   flex: 3,
                   child: Text(
-                    userState.user.languages[index]['commitCount'].toString(),
+                    userState.user.repositories[index].languages[i]['commitCount'].toString(),
                     style: TextStyle(
                       fontFamily: 'BalooDa',
                       fontSize: 16,
@@ -174,7 +165,7 @@ Widget itemLanguagesDetailProject(UserProvider userState, int index, int i) {
                 Expanded(
                   flex: 3,
                   child: Text(
-                    userState.user.languages[index]['experience'].toString(),
+                    userState.user.repositories[index].languages[i]['experience'].toString(),
                     style: TextStyle(
                       fontFamily: 'BalooDa',
                       fontSize: 16,
@@ -211,7 +202,7 @@ Widget itemLanguagesDetailProject(UserProvider userState, int index, int i) {
                 Expanded(
                   flex: 3,
                   child: Text(
-                    '${userState.user.languages[index]['temperature'].toString()}°',
+                    '${userState.user.repositories[index].languages[i]['temperature'].toString()}°',
                     style: TextStyle(
                       fontFamily: 'BalooDa',
                       fontSize: 16,

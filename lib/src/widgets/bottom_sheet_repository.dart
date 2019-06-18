@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:scancode_app/src/providers/user.dart';
 import 'package:scancode_app/src/api/end_points.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:scancode_app/src/widgets/cache_svg_picture.dart';
 import 'package:scancode_app/src/widgets/item_language_detail_project.dart';
 
-void showBottomSheetLanguages(
+void showBottomSheetRepository(
     BuildContext context, UserProvider userState, int index) {
   showBottomSheet(
     context: context,
@@ -59,18 +58,8 @@ void showBottomSheetLanguages(
                         backgroundColor: Colors.transparent,
                         child: userState.user.repositories[index].private
                             ? Container(
-                                child: SvgPicture.network(
+                                child: CacheSvgPicture(
                                   '$URL_INTEGRATIONS${userState.user.repositories[index].source.toLowerCase()}.svg',
-                                  placeholderBuilder: (BuildContext context) =>
-                                      new Container(
-                                        child: Center(
-                                          child: SpinKitCubeGrid(
-                                            size: 10,
-                                            color:
-                                                Theme.of(context).primaryColor,
-                                          ),
-                                        ),
-                                      ),
                                 ),
                               )
                             : Container(
