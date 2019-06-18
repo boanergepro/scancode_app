@@ -43,7 +43,7 @@ class _ModalBottomSheetState extends State<ModalBottomSheet>
                   flex: 1,
                 ),
                 Expanded(
-                  flex: 10,
+                  flex: 8,
                   child: Container(
                       padding: EdgeInsets.only(left: 10),
                       decoration: BoxDecoration(
@@ -69,7 +69,7 @@ class _ModalBottomSheetState extends State<ModalBottomSheet>
                   flex: 1,
                 ),
                 Expanded(
-                  flex: 10,
+                  flex: 8,
                   child: Container(
                     padding: EdgeInsets.only(left: 10),
                     decoration: BoxDecoration(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:scancode_app/src/providers/leader.dart';
-import 'package:scancode_app/src/api/countries.dart';
 
 Widget leadersItem(BuildContext context, int index) {
   final leaderState = Provider.of<LeaderProvider>(context);
@@ -113,7 +112,7 @@ Widget leadersItem(BuildContext context, int index) {
                             ),
                             Expanded(
                               flex: 12,
-                              child: Text(countries[leaderState.leaders[index].countryCode],
+                              child: Text(leaderState.leaders[index].countryName,
                                 textScaleFactor: 0.8,
                                 style: TextStyle(
                                   fontFamily: 'BalooDa',
