@@ -6,6 +6,8 @@ import 'package:scancode_app/src/api/end_points.dart';
 
 class LeaderProvider with ChangeNotifier {
   List<Leader> _leaders;
+  String _languageCode = null;
+  String _countryCode = null;
 
   List<Leader> get leaders => _leaders;
 
@@ -23,4 +25,19 @@ class LeaderProvider with ChangeNotifier {
         return 404;
     }
   }
+
+  String get languageCode => _languageCode;
+
+  String get countryCode => _countryCode;
+
+  set currentCountryCode(value){
+    _countryCode = value;
+    notifyListeners();
+  }
+
+  set currentLanguageCode(value){
+    _languageCode = value;
+    notifyListeners();
+  }
+
 }
