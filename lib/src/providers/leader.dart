@@ -1,8 +1,8 @@
+import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:scancode_app/src/models/leader.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:scancode_app/src/api/end_points.dart';
 
 class LeaderProvider with ChangeNotifier {
   List<Leader> _leaders;
@@ -11,8 +11,11 @@ class LeaderProvider with ChangeNotifier {
 
   List<Leader> get leaders => _leaders;
 
-  Future<int> loadDataLeaders() async {
-    final response = await http.get(URL_LEADERS);
+  Future<int> loadDataLeaders({languageCode, countryCode}) async {
+     Uri _uri= Uri.https('codetrace.com', 'api/leaders', {'language': languageCode, 'country': countryCode });
+
+     final response = await http.get(_uri.toString());
+
     switch (response.statusCode) {
       case 200:
         final results =
@@ -30,14 +33,13 @@ class LeaderProvider with ChangeNotifier {
 
   String get countryCode => _countryCode;
 
-  set currentCountryCode(value){
+  set currentCountryCode(value) {
     _countryCode = value;
     notifyListeners();
   }
 
-  set currentLanguageCode(value){
+  set currentLanguageCode(value) {
     _languageCode = value;
     notifyListeners();
   }
-
 }
