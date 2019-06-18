@@ -210,7 +210,7 @@ Widget itemRepositories(
                                       child: Text(
                                         userState
                                             .user.repositories[index].familiarity
-                                            .toString(),
+                                            .toString() + '%',
                                         style: TextStyle(
                                           fontFamily: 'BalooDa',
                                         ),
@@ -246,7 +246,7 @@ Widget itemRepositories(
                                             child: Text(
                                               userState.user.repositories[index]
                                                   .commentCoverage
-                                                  .toString(),
+                                                  .toString() + '%',
                                               style: TextStyle(
                                                 fontFamily: 'BalooDa',
                                               ),
