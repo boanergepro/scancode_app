@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scancode_app/src/providers/leader.dart';
+import 'package:scancode_app/src/providers/app.dart';
 import 'package:provider/provider.dart';
 import 'package:scancode_app/src/widgets/dropdown_language_code.dart';
 import 'package:scancode_app/src/widgets/dropdown_country_code.dart';
@@ -12,6 +13,7 @@ class _ModalBottomSheetState extends State<ModalBottomSheet>
     with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     final leaderState = Provider.of<LeaderProvider>(context);
+    final appState = Provider.of<AppProvider>(context);
     return Container(
       height: 180,
       child: Column(
@@ -118,7 +120,19 @@ class _ModalBottomSheetState extends State<ModalBottomSheet>
                           color: Colors.white,
                         ),
                       ),
-                      onPressed: () {}, //callback when button is clicked
+                      onPressed: () async {
+                        Navigator.pop(context);
+                        appState.loadingOverlay = true;
+                        var responseCode = await leaderState.loadDataLeaders(
+                            countryCode: leaderState.countryCode,
+                            languageCode: leaderState.languageCode);
+
+                        if (responseCode == 200) {
+                          appState.loadingOverlay = false;
+                        } else {
+                          appState.loadingOverlay = false;
+                        }
+                      }, //callback when button is clicked
                     ),
                   ),
                 ),
