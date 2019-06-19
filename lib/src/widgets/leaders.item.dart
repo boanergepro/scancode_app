@@ -1,19 +1,57 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:scancode_app/src/providers/leader.dart';
-import 'package:scancode_app/src/widgets/bottom_sheet_filter_leaders.dart';
 
-
-Widget leadersItem(BuildContext context, int index){
+Widget leadersItem(BuildContext context, int index) {
   final leaderState = Provider.of<LeaderProvider>(context);
+
+  String _getLevel(param) {
+    var _total = param;
+    if (leaderState.leaders[index].experience['total'] != null) {
+      if (_total < 200) {
+        return 'Novice ($param xp)';
+      } else if (_total >= 200 && _total < 400) {
+        return 'Recruit ($param xp)';
+      } else if (_total >= 400 && _total < 800) {
+        return 'Pathfinder ($param xp)';
+      } else if (_total >= 800 && _total < 1600) {
+        return 'Ranger ($param xp)';
+      } else if (_total >= 1600 && _total < 3200) {
+        return 'Knight ($param xp)';
+      } else if (_total >= 3200 && _total < 6400) {
+        return 'King ($param xp)';
+      } else if (_total >= 6400) {
+        return 'Sage ($param xp)';
+      } else {
+        return '';
+      }
+    } else {
+      if (_total < 200) {
+        return '($param xp)';
+      } else if (_total >= 200 && _total < 400) {
+        return '($param xp)';
+      } else if (_total >= 400 && _total < 800) {
+        return '($param xp)';
+      } else if (_total >= 800 && _total < 1600) {
+        return '($param xp)';
+      } else if (_total >= 1600 && _total < 3200) {
+        return '($param xp)';
+      } else if (_total >= 3200 && _total < 6400) {
+        return '($param xp)';
+      } else if (_total >= 6400) {
+        return '($param xp)';
+      } else {
+        return '';
+      }
+    }
+  }
+
   return Container(
     padding: EdgeInsets.only(right: 10, left: 10, top: 5, bottom: 5),
     child: Card(
         color: Colors.white,
         child: InkWell(
-          onTap: () {
-
-          },
+          onTap: () {},
           child: Container(
             height: 160,
             child: Row(
@@ -33,13 +71,13 @@ Widget leadersItem(BuildContext context, int index){
                             flex: 8,
                             child: Container(
                               decoration: BoxDecoration(
-                                border: Border.all(
-                                    color: Colors.purple, width: 2),
+                                border:
+                                    Border.all(color: Colors.purple, width: 2),
                                 borderRadius: BorderRadius.circular(10),
                                 image: DecorationImage(
                                   fit: BoxFit.fill,
-                                  image: NetworkImage(leaderState
-                                      .leaders[index].avatarUrl),
+                                  image: NetworkImage(
+                                      leaderState.leaders[index].avatarUrl),
                                 ),
                               ),
                             ),
@@ -67,16 +105,14 @@ Widget leadersItem(BuildContext context, int index){
                           children: <Widget>[
                             Flexible(
                               flex: 2,
-                              child:
-                              Icon(Icons.place, color: Colors.purple),
+                              child: Icon(Icons.place, color: Colors.purple),
                             ),
                             Spacer(
                               flex: 1,
                             ),
                             Expanded(
                               flex: 12,
-                              child: Text(
-                                leaderState.leaders[index].location,
+                              child: Text(leaderState.leaders[index].countryName,
                                 textScaleFactor: 0.8,
                                 style: TextStyle(
                                   fontFamily: 'BalooDa',
@@ -100,8 +136,12 @@ Widget leadersItem(BuildContext context, int index){
                             Expanded(
                               flex: 12,
                               child: Text(
-                                _getLevel(leaderState
-                                    .leaders[index].experience['total']),
+                                leaderState.leaders[index]
+                                            .experience['total'] != null
+                                    ? _getLevel(leaderState
+                                        .leaders[index].experience['total'])
+                                    : _getLevel(leaderState
+                                        .leaders[index].experience.hashCode),
                                 textScaleFactor: 0.8,
                                 style: TextStyle(
                                   fontFamily: 'BalooDa',
@@ -141,13 +181,18 @@ Widget leadersItem(BuildContext context, int index){
                         ),
                       ],
                     )),
-                Spacer(flex: 1,),
+                Spacer(
+                  flex: 1,
+                ),
                 Expanded(
                     flex: 2,
                     child: Column(
                       children: <Widget>[
-                        Spacer(flex: 1,),
-                        Expanded(flex: 2,
+                        Spacer(
+                          flex: 1,
+                        ),
+                        Expanded(
+                          flex: 2,
                           child: CircleAvatar(
                             radius: 15,
                             backgroundColor: Colors.purple,
@@ -156,11 +201,11 @@ Widget leadersItem(BuildContext context, int index){
                                   fontFamily: 'BalooDa',
                                   color: Colors.white,
                                 )),
-                          ),),
+                          ),
+                        ),
                         Spacer(flex: 7)
                       ],
-                    )
-                ),
+                    )),
                 Spacer(
                   flex: 1,
                 ),
@@ -169,24 +214,4 @@ Widget leadersItem(BuildContext context, int index){
           ),
         )),
   );
-}
-String _getLevel(int param) {
-  int _total = param;
-  if (_total < 200) {
-    return 'Novice ($param xp)';
-  } else if (_total >= 200 && _total < 400) {
-    return 'Recruit ($param xp)';
-  } else if (_total >= 400 && _total < 800) {
-    return 'Pathfinder ($param xp)';
-  } else if (_total >= 800 && _total < 1600) {
-    return 'Ranger ($param xp)';
-  } else if (_total >= 1600 && _total < 3200) {
-    return 'Knight ($param xp)';
-  } else if (_total >= 3200 && _total < 6400) {
-    return 'King ($param xp)';
-  } else if (_total >= 6400) {
-    return 'Sage ($param xp)';
-  } else {
-    return '';
-  }
 }

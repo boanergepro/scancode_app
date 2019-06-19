@@ -39,7 +39,7 @@ Widget drawer(BuildContext context) {
             ),
           ),
           onTap: () {
-           Navigator.pushNamed(context, HomeScreen.routerName);
+            Navigator.pushNamed(context, HomeScreen.routerName);
           },
         ),
         Divider(),
@@ -56,6 +56,8 @@ Widget drawer(BuildContext context) {
             ),
           ),
           onTap: () {
+            leadersState.currentLanguageCode = null;
+            leadersState.currentCountryCode = null;
             _getLeaders(appState, leadersState, context);
           },
         ),

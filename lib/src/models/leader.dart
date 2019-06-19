@@ -1,3 +1,4 @@
+import 'package:scancode_app/src/api/countries.dart';
 class Leader {
   String _id;
   String _name;
@@ -33,4 +34,7 @@ class Leader {
   Map<String, dynamic> get experience => _experience;
 
   String get countryCode => _countryCode;
+
+  String get countryName => countries[_countryCode] ?? "N/A";
+
 }
