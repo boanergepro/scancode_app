@@ -17,50 +17,61 @@ class LeadersScreen extends StatelessWidget {
     final appState = Provider.of<AppProvider>(context);
 
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Leaders'),
-        ),
-        floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {
-            Future(() => showModalBottomSheet(
-                context: context,
-                builder: (context) {
-                  return ModalBottomSheet();
-                }));
-          },
-          backgroundColor: Colors.white,
-          icon: Icon(
-            Icons.filter_list,
-            color: Colors.purple,
-          ),
-          label: Text(
-            'Filter',
-            style: TextStyle(
-              fontFamily: 'BalooDa',
-              fontSize: 15,
-              color: Colors.black,
-            ),
+      appBar: AppBar(
+        title: Text(
+          'Leaders',
+          style: TextStyle(
+            fontFamily: 'BalooDa',
+            fontSize: 20,
+            color: Colors.white,
           ),
         ),
-        drawer: drawer(context),
-        body: Stack(
-          children: <Widget>[
-            Column(
-              children: <Widget>[
-                Expanded(
-                    flex: 9,
-                    child: ListView.builder(
-                      itemCount: leaderState.leaders.length,
-                      itemBuilder: (context, int index) {
-                        return leadersItem(context, index);
-                      },
-                    ))
-              ],
-            ),
-            LoadingOverlay(
-              loading: appState.loadingOverlay,
-            ),
-          ],
-        ));
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          Future(
+            () => showModalBottomSheet(
+                  context: context,
+                  builder: (context) {
+                    return ModalBottomSheet();
+                  },
+                ),
+          );
+        },
+        backgroundColor: Colors.white,
+        icon: Icon(
+          Icons.filter_list,
+          color: Colors.purple,
+        ),
+        label: Text(
+          'Filter',
+          style: TextStyle(
+            fontFamily: 'BalooDa',
+            fontSize: 15,
+            color: Colors.black,
+          ),
+        ),
+      ),
+      drawer: drawer(context),
+      body: Stack(
+        children: <Widget>[
+          Column(
+            children: <Widget>[
+              Expanded(
+                  flex: 9,
+                  child: ListView.builder(
+                    itemCount: leaderState.leaders.length,
+                    itemBuilder: (context, int index) {
+                      return leadersItem(context, index);
+                    },
+                  ))
+            ],
+          ),
+          LoadingOverlay(
+            loading: appState.loadingOverlay,
+          ),
+        ],
+      ),
+    );
   }
 }
