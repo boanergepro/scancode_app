@@ -13,11 +13,11 @@ Widget itemRepositories(
       bottom: 5,
       left: 10,
     ),
-    child: InkWell(
-      onTap: () {
-        showBottomSheetRepository(context, userState, index);
-      },
-      child: Card(
+    child: Card(
+      child: InkWell(
+        onTap: () {
+          showBottomSheetRepository(context, userState, index);
+        },
         child: Container(
           height: MediaQuery.of(context).size.height / 3,
           child: Column(
