@@ -35,6 +35,6 @@ class Leader {
 
   String get countryCode => _countryCode;
 
-  String get countryName => countries[_countryCode] ?? "N/A";
+  String get countryName => countries[_countryCode] ?? "N/A ";
 
 }
