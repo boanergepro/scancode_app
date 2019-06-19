@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'dart:io';
@@ -28,7 +27,6 @@ class AvatarPicture extends StatelessWidget {
           default:
             if (snapshot.hasData) {
               final _picture = snapshot.data;
-
               return Container(
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.purple[200], width: 2),
