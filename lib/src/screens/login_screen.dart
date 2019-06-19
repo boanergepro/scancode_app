@@ -146,22 +146,31 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _handleLogin(
       context, AppProvider appState, UserProvider userState) async {
-    appState.loadingOverlay = true;
+    if (_usernameController.text != '') {
+      appState.loadingOverlay = true;
 
-    var responseCode = await userState.loadDataUser(_usernameController.text);
+      var responseCode = await userState.loadDataUser(_usernameController.text);
 
-    if (responseCode == 200) {
-      appState.loadingOverlay = false;
-      Navigator.pushNamed(context, HomeScreen.routerName);
+      if (responseCode == 200) {
+        appState.loadingOverlay = false;
+        Navigator.pushNamed(context, HomeScreen.routerName);
+      } else {
+        appState.loadingOverlay = false;
+        _scaffoldKey.currentState.showSnackBar(
+          SnackBar(
+            content: Text(
+                'Error! Please verify the username or your internet connection'),
+          ),
+        );
+        throw Exception('Failed to load User');
+      }
     } else {
-      appState.loadingOverlay = false;
       _scaffoldKey.currentState.showSnackBar(
         SnackBar(
           content: Text(
-              'Error! Please verify the username or your internet connection'),
+              'Error! write a username'),
         ),
       );
-      throw Exception('Failed to load User');
     }
   }
 }

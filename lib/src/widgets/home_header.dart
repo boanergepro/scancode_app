@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scancode_app/src/providers/user.dart';
+import 'package:scancode_app/src/widgets/avatar_picture.dart';
 
 Widget homeHeader(UserProvider userState) {
   return Container(
@@ -13,27 +14,21 @@ Widget homeHeader(UserProvider userState) {
             children: <Widget>[
               Spacer(flex: 1),
               Expanded(
-                flex: 3,
-                child: Column(
-                  children: <Widget>[
-                    Spacer(flex: 1,),
-                    Expanded(
-                      flex: 12,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.purple[200], width: 2),
-                          borderRadius: BorderRadius.circular(10),
-                          image: DecorationImage(
-                            fit: BoxFit.fill,
-                            image: NetworkImage(userState.user.avatarUrl),
-                          ),
-                        ),
+                  flex: 3,
+                  child: Column(
+                    children: <Widget>[
+                      Spacer(
+                        flex: 1,
                       ),
-                    ),
-                    Spacer(flex: 1,),
-                  ],
-                )
-              ),
+                      Expanded(
+                        flex: 12,
+                        child: AvatarPicture(userState.user.avatarUrl),
+                      ),
+                      Spacer(
+                        flex: 1,
+                      ),
+                    ],
+                  )),
               Spacer(flex: 1),
               Expanded(
                 flex: 6,

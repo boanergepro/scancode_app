@@ -14,12 +14,14 @@ Widget drawer(BuildContext context) {
     child: ListView(
       children: <Widget>[
         DrawerHeader(
-          child: Text(
-            '//ScanCode',
-            style: TextStyle(
-              fontFamily: 'BalooDa',
-              fontSize: 30,
-              color: Colors.white,
+          child: Center(
+            child: Text(
+              '//ScanCode',
+              style: TextStyle(
+                fontFamily: 'BalooDa',
+                fontSize: 30,
+                color: Colors.white,
+              ),
             ),
           ),
           decoration: BoxDecoration(
