@@ -1,4 +1,5 @@
 import 'package:scancode_app/src/api/countries.dart';
+
 class Leader {
   String _id;
   String _name;
@@ -17,7 +18,6 @@ class Leader {
     _location = json['location'] ?? "";
     _experience = json['experience'] ?? "";
     _countryCode = json['countryCode'] ?? "";
-
   }
 
   // Getter
@@ -36,5 +36,4 @@ class Leader {
   String get countryCode => _countryCode;
 
   String get countryName => countries[_countryCode] ?? "N/A";
-
 }

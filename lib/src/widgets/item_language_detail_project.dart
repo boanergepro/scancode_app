@@ -24,10 +24,7 @@ Widget itemLanguagesDetailProject(UserProvider userState, int index, int i) {
           Text(
             capitalize(userState.user.repositories[index].languages[i]['name']),
             style: TextStyle(
-              fontFamily: 'BalooDa',
-              color: Colors.purple,
-              fontSize: 18
-            ),
+                fontFamily: 'BalooDa', color: Colors.purple, fontSize: 18),
           ),
           Expanded(
             flex: 1,
@@ -54,7 +51,9 @@ Widget itemLanguagesDetailProject(UserProvider userState, int index, int i) {
                 Expanded(
                   flex: 3,
                   child: Text(
-                    userState.user.repositories[index].languages[i]['additionCount'].toString(),
+                    userState
+                        .user.repositories[index].languages[i]['additionCount']
+                        .toString(),
                     style: TextStyle(
                       fontFamily: 'BalooDa',
                       fontSize: 16,
@@ -91,7 +90,9 @@ Widget itemLanguagesDetailProject(UserProvider userState, int index, int i) {
                 Expanded(
                   flex: 3,
                   child: Text(
-                    userState.user.repositories[index].languages[i]['deletionCount'].toString(),
+                    userState
+                        .user.repositories[index].languages[i]['deletionCount']
+                        .toString(),
                     style: TextStyle(
                       fontFamily: 'BalooDa',
                       fontSize: 16,
@@ -128,7 +129,9 @@ Widget itemLanguagesDetailProject(UserProvider userState, int index, int i) {
                 Expanded(
                   flex: 3,
                   child: Text(
-                    userState.user.repositories[index].languages[i]['commitCount'].toString(),
+                    userState
+                        .user.repositories[index].languages[i]['commitCount']
+                        .toString(),
                     style: TextStyle(
                       fontFamily: 'BalooDa',
                       fontSize: 16,
@@ -165,7 +168,9 @@ Widget itemLanguagesDetailProject(UserProvider userState, int index, int i) {
                 Expanded(
                   flex: 3,
                   child: Text(
-                    userState.user.repositories[index].languages[i]['experience'].toString(),
+                    userState
+                        .user.repositories[index].languages[i]['experience']
+                        .toString(),
                     style: TextStyle(
                       fontFamily: 'BalooDa',
                       fontSize: 16,

@@ -9,11 +9,12 @@ import 'package:provider/provider.dart';
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(providers: [
-      ChangeNotifierProvider(builder: (context) => UserProvider()),
-      ChangeNotifierProvider(builder: (context) => AppProvider()),
-      ChangeNotifierProvider(builder: (context) => LeaderProvider()),
-    ],
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(builder: (context) => UserProvider()),
+        ChangeNotifierProvider(builder: (context) => AppProvider()),
+        ChangeNotifierProvider(builder: (context) => LeaderProvider()),
+      ],
       child: MaterialApp(
         theme: customTheme,
         debugShowCheckedModeBanner: false,

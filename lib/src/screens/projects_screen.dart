@@ -38,8 +38,10 @@ class ProjectsScreen extends StatelessWidget {
               },
             ),
           ),
-          LoadingOverlay(loading: appState.loadingOverlay,),
-        ]
+          LoadingOverlay(
+            loading: appState.loadingOverlay,
+          ),
+        ],
       ),
     );
   }

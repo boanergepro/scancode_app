@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:scancode_app/src/providers/leader.dart';
 import 'package:scancode_app/src/providers/app.dart';
 import 'package:scancode_app/src/widgets/drawer.dart';
-import 'package:scancode_app/src/widgets/leaders.item.dart';
+import 'package:scancode_app/src/widgets/item_leaders.dart';
 import 'package:scancode_app/src/widgets/bottom_sheet_filter_leaders.dart';
 import 'package:scancode_app/src/widgets/loading_overlay.dart';
 
@@ -58,13 +58,14 @@ class LeadersScreen extends StatelessWidget {
           Column(
             children: <Widget>[
               Expanded(
-                  flex: 9,
-                  child: ListView.builder(
-                    itemCount: leaderState.leaders.length,
-                    itemBuilder: (context, int index) {
-                      return leadersItem(context, index);
-                    },
-                  ))
+                flex: 9,
+                child: ListView.builder(
+                  itemCount: leaderState.leaders.length,
+                  itemBuilder: (context, int index) {
+                    return leadersItem(context, index);
+                  },
+                ),
+              )
             ],
           ),
           LoadingOverlay(

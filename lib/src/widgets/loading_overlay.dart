@@ -23,7 +23,7 @@ class _LoadingOverlayState extends State<LoadingOverlay> {
             height: double.infinity,
             color: Color(0x80FFFFFF),
             child: Center(
-              child: SpinKitCubeGrid (
+              child: SpinKitCubeGrid(
                 color: Theme.of(context).primaryColor,
               ),
             ),

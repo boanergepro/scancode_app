@@ -9,9 +9,8 @@ Widget customTextField({
   Function onTap,
   bool obscureText: false,
   bool autofocus: false,
-}){
+}) {
   return TextField(
-
     autofocus: autofocus,
     obscureText: obscureText,
     onTap: onTap,

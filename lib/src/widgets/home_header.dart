@@ -14,21 +14,22 @@ Widget homeHeader(UserProvider userState) {
             children: <Widget>[
               Spacer(flex: 1),
               Expanded(
-                  flex: 3,
-                  child: Column(
-                    children: <Widget>[
-                      Spacer(
-                        flex: 1,
-                      ),
-                      Expanded(
-                        flex: 12,
-                        child: AvatarPicture(userState.user.avatarUrl),
-                      ),
-                      Spacer(
-                        flex: 1,
-                      ),
-                    ],
-                  )),
+                flex: 3,
+                child: Column(
+                  children: <Widget>[
+                    Spacer(
+                      flex: 1,
+                    ),
+                    Expanded(
+                      flex: 12,
+                      child: AvatarPicture(userState.user.avatarUrl),
+                    ),
+                    Spacer(
+                      flex: 1,
+                    ),
+                  ],
+                ),
+              ),
               Spacer(flex: 1),
               Expanded(
                 flex: 6,
@@ -169,7 +170,10 @@ Widget homeHeader(UserProvider userState) {
                   flex: 4,
                   child: Container(
                     decoration: BoxDecoration(
-                        border: Border(right: BorderSide(color: Colors.grey))),
+                      border: Border(
+                        right: BorderSide(color: Colors.grey),
+                      ),
+                    ),
                     child: Column(
                       children: <Widget>[
                         Expanded(
@@ -207,7 +211,12 @@ Widget homeHeader(UserProvider userState) {
                   flex: 4,
                   child: Container(
                     decoration: BoxDecoration(
-                        border: Border(right: BorderSide(color: Colors.grey))),
+                      border: Border(
+                        right: BorderSide(
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ),
                     child: Column(
                       children: <Widget>[
                         Expanded(

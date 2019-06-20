@@ -167,8 +167,7 @@ class _LoginScreenState extends State<LoginScreen> {
     } else {
       _scaffoldKey.currentState.showSnackBar(
         SnackBar(
-          content: Text(
-              'Error! write a username'),
+          content: Text('Error! write a username'),
         ),
       );
     }

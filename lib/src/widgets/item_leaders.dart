@@ -7,10 +7,9 @@ Widget leadersItem(BuildContext context, int index) {
 
   String _getLevel(param) {
     var _total = param;
-    if(_total is int){
-      param= _total.toString();
-    }
-    else{
+    if (_total is int) {
+      param = _total.toString();
+    } else {
       param = _total.toStringAsFixed(2);
     }
     if (leaderState.leaders[index].experience['total'] != null) {
@@ -64,153 +63,161 @@ Widget leadersItem(BuildContext context, int index) {
               flex: 1,
             ),
             Expanded(
-                flex: 6,
-                child: Container(
-                  child: Column(
-                    children: <Widget>[
-                      Spacer(
-                        flex: 1,
-                      ),
-                      Expanded(
-                        flex: 8,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.purple, width: 2),
-                            borderRadius: BorderRadius.circular(10),
-                            image: DecorationImage(
-                              fit: BoxFit.fill,
-                              image: NetworkImage(
-                                  leaderState.leaders[index].avatarUrl),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Spacer(
-                        flex: 1,
-                      )
-                    ],
-                  ),
-                )),
-            Spacer(),
-            Expanded(
-                flex: 12,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Spacer(flex: 1),
-                    Text(leaderState.leaders[index].name,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontFamily: 'BalooDa',
-                          fontSize: 20,
-                          color: Colors.black,
-                        )),
-                    Row(
-                      children: <Widget>[
-                        Flexible(
-                          flex: 2,
-                          child: Icon(Icons.place, color: Colors.purple),
-                        ),
-                        Spacer(
-                          flex: 1,
-                        ),
-                        Expanded(
-                          flex: 12,
-                          child: Text(
-                            leaderState.leaders[index].countryName,
-                            textScaleFactor: 0.8,
-                            style: TextStyle(
-                              fontFamily: 'BalooDa',
-                              fontSize: 15,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Flexible(
-                          flex: 2,
-                          child:
-                              Icon(Icons.multiline_chart, color: Colors.purple),
-                        ),
-                        Spacer(
-                          flex: 1,
-                        ),
-                        Expanded(
-                          flex: 12,
-                          child: Text(
-                            leaderState.leaders[index].experience['total'] !=
-                                    null
-                                ? _getLevel(leaderState
-                                    .leaders[index].experience['total'])
-                                : _getLevel(leaderState
-                                    .leaders[index].experience.hashCode),
-                            textScaleFactor: 0.8,
-                            style: TextStyle(
-                              fontFamily: 'BalooDa',
-                              fontSize: 15,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Flexible(
-                          flex: 2,
-                          child:
-                              Icon(Icons.alternate_email, color: Colors.purple),
-                        ),
-                        Spacer(
-                          flex: 1,
-                        ),
-                        Expanded(
-                          flex: 12,
-                          child: Text(
-                            leaderState.leaders[index].username,
-                            textScaleFactor: 0.8,
-                            style: TextStyle(
-                              fontFamily: 'BalooDa',
-                              fontSize: 15,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Spacer(
-                      flex: 1,
-                    ),
-                  ],
-                )),
-            Spacer(
-              flex: 1,
-            ),
-            Expanded(
-                flex: 2,
+              flex: 6,
+              child: Container(
                 child: Column(
                   children: <Widget>[
                     Spacer(
                       flex: 1,
                     ),
                     Expanded(
-                      flex: 2,
-                      child: CircleAvatar(
-                        radius: 15,
-                        backgroundColor: Colors.purple,
-                        child: Text('${index + 1}',
-                            style: TextStyle(
-                              fontFamily: 'BalooDa',
-                              color: Colors.white,
-                            )),
+                      flex: 8,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.purple, width: 2),
+                          borderRadius: BorderRadius.circular(10),
+                          image: DecorationImage(
+                            fit: BoxFit.fill,
+                            image: NetworkImage(
+                                leaderState.leaders[index].avatarUrl),
+                          ),
+                        ),
                       ),
                     ),
-                    Spacer(flex: 7)
+                    Spacer(
+                      flex: 1,
+                    )
                   ],
-                )),
+                ),
+              ),
+            ),
+            Spacer(
+              flex: 1,
+            ),
+            Expanded(
+              flex: 12,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Spacer(flex: 1),
+                  Text(
+                    leaderState.leaders[index].name,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontFamily: 'BalooDa',
+                      fontSize: 20,
+                      color: Colors.black,
+                    ),
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Flexible(
+                        flex: 2,
+                        child: Icon(Icons.place, color: Colors.purple),
+                      ),
+                      Spacer(
+                        flex: 1,
+                      ),
+                      Expanded(
+                        flex: 12,
+                        child: Text(
+                          leaderState.leaders[index].countryName,
+                          textScaleFactor: 0.8,
+                          style: TextStyle(
+                            fontFamily: 'BalooDa',
+                            fontSize: 15,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Flexible(
+                        flex: 2,
+                        child:
+                            Icon(Icons.multiline_chart, color: Colors.purple),
+                      ),
+                      Spacer(
+                        flex: 1,
+                      ),
+                      Expanded(
+                        flex: 12,
+                        child: Text(
+                          leaderState.leaders[index].experience['total'] != null
+                              ? _getLevel(leaderState
+                                  .leaders[index].experience['total'])
+                              : _getLevel(leaderState
+                                  .leaders[index].experience.hashCode),
+                          textScaleFactor: 0.8,
+                          style: TextStyle(
+                            fontFamily: 'BalooDa',
+                            fontSize: 15,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Flexible(
+                        flex: 2,
+                        child:
+                            Icon(Icons.alternate_email, color: Colors.purple),
+                      ),
+                      Spacer(
+                        flex: 1,
+                      ),
+                      Expanded(
+                        flex: 12,
+                        child: Text(
+                          leaderState.leaders[index].username,
+                          textScaleFactor: 0.8,
+                          style: TextStyle(
+                            fontFamily: 'BalooDa',
+                            fontSize: 15,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Spacer(
+                    flex: 1,
+                  ),
+                ],
+              ),
+            ),
+            Spacer(
+              flex: 1,
+            ),
+            Expanded(
+              flex: 2,
+              child: Column(
+                children: <Widget>[
+                  Spacer(
+                    flex: 1,
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: CircleAvatar(
+                      radius: 15,
+                      backgroundColor: Colors.purple,
+                      child: Text(
+                        '${index + 1}',
+                        style: TextStyle(
+                          fontFamily: 'BalooDa',
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Spacer(flex: 7)
+                ],
+              ),
+            ),
             Spacer(
               flex: 1,
             ),

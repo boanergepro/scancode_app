@@ -6,15 +6,16 @@ import 'dart:convert';
 
 class LeaderProvider with ChangeNotifier {
   List<Leader> _leaders;
-  String _languageCode = null;
-  String _countryCode = null;
+  String _languageCode;
+  String _countryCode;
 
   List<Leader> get leaders => _leaders;
 
   Future<int> loadDataLeaders({languageCode, countryCode}) async {
-     Uri _uri= Uri.https('codetrace.com', 'api/leaders', {'language': languageCode, 'country': countryCode });
+    Uri _uri = Uri.https('codetrace.com', 'api/leaders',
+        {'language': languageCode, 'country': countryCode});
 
-     final response = await http.get(_uri.toString());
+    final response = await http.get(_uri.toString());
 
     switch (response.statusCode) {
       case 200:

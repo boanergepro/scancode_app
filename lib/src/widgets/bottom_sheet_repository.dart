@@ -215,7 +215,7 @@ void showBottomSheetRepository(
                     flex: 10,
                     child: Container(
                       color: Colors.white,
-                      child: userState.user.repositories[index].languages.length < 1 ? ListView.separated(
+                      child: userState.user.repositories[index].languages.length > 1 ? ListView.separated(
                         itemCount:
                             userState.user.repositories[index].languages.length,
                         itemBuilder: (BuildContext context, i) {
@@ -231,7 +231,7 @@ void showBottomSheetRepository(
                             fontSize: 18,
                           ),
                         ),
-                      )
+                      ),
                     ),
                   )
                 ],

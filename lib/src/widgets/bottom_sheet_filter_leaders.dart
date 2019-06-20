@@ -45,25 +45,31 @@ class _ModalBottomSheetState extends State<ModalBottomSheet>
                 Expanded(
                   flex: 8,
                   child: Container(
-                      padding: EdgeInsets.only(left: 10),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          border: Border.all(color: Colors.purple)),
-                      child: DropdownButtonHideUnderline(
-                        child: DropdownButton(
-                          hint: Text('All languages',
-                              style: TextStyle(
-                                fontFamily: 'BalooDa',
-                                fontSize: 15,
-                                color: Colors.black,
-                              )),
-                          items: listLanguageCode,
-                          value: leaderState.languageCode,
-                          onChanged: (value) {
-                            leaderState.currentLanguageCode = value;
-                          },
+                    padding: EdgeInsets.only(left: 10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      border: Border.all(
+                        color: Colors.purple,
+                      ),
+                    ),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton(
+                        hint: Text(
+                          'All languages',
+                          style: TextStyle(
+                            fontFamily: 'BalooDa',
+                            fontSize: 15,
+                            color: Colors.black,
+                          ),
                         ),
-                      )),
+                        items: listLanguageCode,
+                        value: leaderState.languageCode,
+                        onChanged: (value) {
+                          leaderState.currentLanguageCode = value;
+                        },
+                      ),
+                    ),
+                  ),
                 ),
                 Spacer(
                   flex: 1,
@@ -73,22 +79,28 @@ class _ModalBottomSheetState extends State<ModalBottomSheet>
                   child: Container(
                     padding: EdgeInsets.only(left: 10),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                        border: Border.all(color: Colors.purple)),
+                      borderRadius: BorderRadius.circular(30),
+                      border: Border.all(
+                        color: Colors.purple,
+                      ),
+                    ),
                     child: DropdownButtonHideUnderline(
-                        child: DropdownButton(
-                      hint: Text('All countries',
+                      child: DropdownButton(
+                        hint: Text(
+                          'All countries',
                           style: TextStyle(
                             fontFamily: 'BalooDa',
                             fontSize: 15,
                             color: Colors.black,
-                          )),
-                      items: listCountryCode,
-                      value: leaderState.countryCode,
-                      onChanged: (value) {
-                        leaderState.currentCountryCode = value;
-                      },
-                    )),
+                          ),
+                        ),
+                        items: listCountryCode,
+                        value: leaderState.countryCode,
+                        onChanged: (value) {
+                          leaderState.currentCountryCode = value;
+                        },
+                      ),
+                    ),
                   ),
                 ),
                 Spacer(
@@ -111,7 +123,8 @@ class _ModalBottomSheetState extends State<ModalBottomSheet>
                     child: RaisedButton(
                       color: Colors.purple,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.0)),
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
                       child: Text(
                         'Search',
                         style: TextStyle(

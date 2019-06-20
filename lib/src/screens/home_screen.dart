@@ -80,19 +80,21 @@ class HomeScreen extends StatelessWidget {
                 ),
                 SliverList(
                   delegate: SliverChildListDelegate(
-                      <Widget>[
-                        Container(
-                          height: _screenHeight / 5,
-                          child: homeLanguages(userState),
-                        ),
-                        Divider(),
-                      ]
+                    <Widget>[
+                      Container(
+                        height: _screenHeight / 5,
+                        child: homeLanguages(userState),
+                      ),
+                      Divider(),
+                    ],
                   ),
                 )
               ],
             ),
           ),
-          LoadingOverlay(loading: appState.loadingOverlay,),
+          LoadingOverlay(
+            loading: appState.loadingOverlay,
+          ),
         ],
       ),
     );

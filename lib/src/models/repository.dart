@@ -30,15 +30,26 @@ class Repository {
 
   // Getter
   String get fullName => _fullName;
+
   String get source => _source;
+
   int get commentCoverage => _commentCoverage;
+
   int get starCount => _starCount;
+
   int get activeMonthCount => _activeMonthCount;
+
   String get imageUrl => _imageUrl;
+
   int get commitCount => _commitCount;
+
   int get contributorCount => _contributorCount;
+
   int get familiarity => _familiarity;
+
   int get contributorActiveMonthCount => _contributorActiveMonthCount;
+
   List<Map<String, dynamic>> get languages => _languages;
+
   bool get private => _private;
 }
