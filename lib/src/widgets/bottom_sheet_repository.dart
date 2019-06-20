@@ -114,98 +114,99 @@ void showBottomSheetRepository(
 
                         // Items descriptions
                         Expanded(
-                            flex: 8,
-                            child: Container(
-                              child: ListView(
-                                scrollDirection: Axis.horizontal,
-                                children: <Widget>[
-                                  SizedBox(
-                                    width: 8,
-                                  ),
-                                  // starts
-                                  Chip(
-                                    avatar: Icon(Icons.star),
-                                    label: Text(
-                                      'Stars ${userState.user.repositories[index].starCount.toString()}',
-                                      style: TextStyle(
-                                        fontFamily: 'BalooDa',
-                                        color: Colors.white,
-                                      ),
+                          flex: 8,
+                          child: Container(
+                            child: ListView(
+                              scrollDirection: Axis.horizontal,
+                              children: <Widget>[
+                                SizedBox(
+                                  width: 8,
+                                ),
+                                // starts
+                                Chip(
+                                  avatar: Icon(Icons.star),
+                                  label: Text(
+                                    'Stars ${userState.user.repositories[index].starCount.toString()}',
+                                    style: TextStyle(
+                                      fontFamily: 'BalooDa',
+                                      color: Colors.white,
                                     ),
-                                    backgroundColor: Colors.purple,
-                                    elevation: 4,
                                   ),
-                                  SizedBox(
-                                    width: 8,
-                                  ),
-                                  // Contributors
-                                  Chip(
-                                    avatar: Icon(Icons.people_outline),
-                                    label: Text(
-                                      'Contributors ${userState.user.repositories[index].contributorCount.toString()}',
-                                      style: TextStyle(
-                                        fontFamily: 'BalooDa',
-                                        color: Colors.white,
-                                      ),
+                                  backgroundColor: Colors.purple,
+                                  elevation: 4,
+                                ),
+                                SizedBox(
+                                  width: 8,
+                                ),
+                                // Contributors
+                                Chip(
+                                  avatar: Icon(Icons.people_outline),
+                                  label: Text(
+                                    'Contributors ${userState.user.repositories[index].contributorCount.toString()}',
+                                    style: TextStyle(
+                                      fontFamily: 'BalooDa',
+                                      color: Colors.white,
                                     ),
-                                    backgroundColor: Colors.purple,
-                                    elevation: 4,
                                   ),
-                                  SizedBox(
-                                    width: 8,
-                                  ),
-                                  // Active Months
-                                  Chip(
-                                    avatar: Icon(Icons.access_time),
-                                    label: Text(
-                                      'Months Active in the Project ${userState.user.repositories[index].activeMonthCount.toString()}',
-                                      style: TextStyle(
-                                        fontFamily: 'BalooDa',
-                                        color: Colors.white,
-                                      ),
+                                  backgroundColor: Colors.purple,
+                                  elevation: 4,
+                                ),
+                                SizedBox(
+                                  width: 8,
+                                ),
+                                // Active Months
+                                Chip(
+                                  avatar: Icon(Icons.access_time),
+                                  label: Text(
+                                    'Months Active in the Project ${userState.user.repositories[index].activeMonthCount.toString()}',
+                                    style: TextStyle(
+                                      fontFamily: 'BalooDa',
+                                      color: Colors.white,
                                     ),
-                                    backgroundColor: Colors.purple,
-                                    elevation: 4,
                                   ),
-                                  SizedBox(
-                                    width: 8,
-                                  ),
-                                  // Project Familiarity
-                                  Chip(
-                                    avatar: Icon(Icons.pie_chart_outlined),
-                                    label: Text(
-                                      'Project Familiarity ${userState.user.repositories[index].familiarity}%',
-                                      style: TextStyle(
-                                        fontFamily: 'BalooDa',
-                                        color: Colors.white,
-                                      ),
+                                  backgroundColor: Colors.purple,
+                                  elevation: 4,
+                                ),
+                                SizedBox(
+                                  width: 8,
+                                ),
+                                // Project Familiarity
+                                Chip(
+                                  avatar: Icon(Icons.pie_chart_outlined),
+                                  label: Text(
+                                    'Project Familiarity ${userState.user.repositories[index].familiarity}%',
+                                    style: TextStyle(
+                                      fontFamily: 'BalooDa',
+                                      color: Colors.white,
                                     ),
-                                    backgroundColor: Colors.purple,
-                                    elevation: 4,
                                   ),
-                                  SizedBox(
-                                    width: 8,
-                                  ),
-                                  //Comment Coverage
-                                  userState.user.repositories[index]
-                                              .commentCoverage !=
-                                          0
-                                      ? Chip(
-                                          avatar: Icon(Icons.code),
-                                          label: Text(
-                                            'Comment Coverage ${userState.user.repositories[index].commentCoverage.toString()}%',
-                                            style: TextStyle(
-                                              fontFamily: 'BalooDa',
-                                              color: Colors.white,
-                                            ),
+                                  backgroundColor: Colors.purple,
+                                  elevation: 4,
+                                ),
+                                SizedBox(
+                                  width: 8,
+                                ),
+                                //Comment Coverage
+                                userState.user.repositories[index]
+                                            .commentCoverage !=
+                                        0
+                                    ? Chip(
+                                        avatar: Icon(Icons.code),
+                                        label: Text(
+                                          'Comment Coverage ${userState.user.repositories[index].commentCoverage.toString()}%',
+                                          style: TextStyle(
+                                            fontFamily: 'BalooDa',
+                                            color: Colors.white,
                                           ),
-                                          backgroundColor: Colors.purple,
-                                          elevation: 4,
-                                        )
-                                      : Text('')
-                                ],
-                              ),
-                            )),
+                                        ),
+                                        backgroundColor: Colors.purple,
+                                        elevation: 4,
+                                      )
+                                    : Text('')
+                              ],
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -214,14 +215,23 @@ void showBottomSheetRepository(
                     flex: 10,
                     child: Container(
                       color: Colors.white,
-                      child: ListView.separated(
+                      child: userState.user.repositories[index].languages.length < 1 ? ListView.separated(
                         itemCount:
-                        userState.user.repositories[index].languages.length,
+                            userState.user.repositories[index].languages.length,
                         itemBuilder: (BuildContext context, i) {
-                          return itemLanguagesDetailProject(userState, index, i);
+                          return itemLanguagesDetailProject(
+                              userState, index, i);
                         },
                         separatorBuilder: (context, i) => Divider(),
-                      ),
+                      ) : Center(
+                        child: Text(
+                          'Nothing to show',
+                          style: TextStyle(
+                            fontFamily: 'BalooDa',
+                            fontSize: 18,
+                          ),
+                        ),
+                      )
                     ),
                   )
                 ],
