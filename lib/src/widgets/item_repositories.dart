@@ -253,16 +253,18 @@ Widget itemRepositories(
                         ),
                       ),
                       Expanded(
-                          flex: 8,
-                          child: LayoutBuilder(
-                            builder: (context, constraints) {
-                              return GridView.count(
-                                physics: ScrollPhysics(),
-                                crossAxisCount: 5,
-                                crossAxisSpacing: 13,
-                                children: List.generate(
-                                    userState.user.repositories[index].languages
-                                        .length, (indexx) {
+                        flex: 8,
+                        child: userState
+                            .user.repositories[index].languages.length > 1 ? LayoutBuilder(
+                          builder: (context, constraints) {
+                            return GridView.count(
+                              physics: ScrollPhysics(),
+                              crossAxisCount: 5,
+                              crossAxisSpacing: 13,
+                              children: List.generate(
+                                userState
+                                    .user.repositories[index].languages.length,
+                                (indexx) {
                                   return Container(
                                     margin:
                                         EdgeInsets.only(left: 10, right: 10),
@@ -272,10 +274,22 @@ Widget itemRepositories(
                                       '$URL_LANGUAGES${userState.user.repositories[index].languages[indexx]['name']}.svg',
                                     ),
                                   );
-                                }),
-                              );
-                            },
-                          )),
+                                },
+                              ),
+                            );
+                          },
+                        ) : Container(
+                          child: Center(
+                            child: Text(
+                              'Nothing to show',
+                              style: TextStyle(
+                                fontFamily: 'BalooDa',
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
