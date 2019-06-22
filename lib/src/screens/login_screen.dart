@@ -57,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             flex: 1,
                           ),
                           Expanded(
-                            flex: 4,
+                            flex: 6,
                             child: Row(
                               children: <Widget>[
                                 Spacer(
@@ -79,6 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       Spacer(
                                         flex: 1,
                                       ),
+                                      // Text
                                       Expanded(
                                         flex: 5,
                                         child: Container(
@@ -105,6 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           Spacer(
                             flex: 1,
                           ),
+                          // Bottom
                           Expanded(
                             flex: 1,
                             child: Container(
