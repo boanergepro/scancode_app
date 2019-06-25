@@ -83,31 +83,40 @@ Widget itemRepositories(
                             Expanded(
                               flex: 6,
                               child: Container(
-                                child: Row(
-                                  children: <Widget>[
-                                    Expanded(
-                                      flex: 5,
-                                      child: Icon(
-                                        Icons.star,
-                                        color: Colors.purple,
-                                      ),
-                                    ),
-                                    Spacer(
-                                      flex: 2,
-                                    ),
-                                    Expanded(
-                                      flex: 5,
-                                      child: Text(
-                                        userState
-                                            .user.repositories[index].starCount
-                                            .toString(),
-                                        style: TextStyle(
-                                          fontFamily: 'BalooDa',
+                                child: userState
+                                            .user.repositories[index].private ==
+                                        false
+                                    ? Row(
+                                        children: <Widget>[
+                                          Expanded(
+                                            flex: 5,
+                                            child: Icon(
+                                              Icons.star,
+                                              color: Colors.purple,
+                                            ),
+                                          ),
+                                          Spacer(
+                                            flex: 1,
+                                          ),
+                                          Expanded(
+                                            flex: 5,
+                                            child: Text(
+                                              userState.user.repositories[index]
+                                                  .starCount
+                                                  .toString(),
+                                              style: TextStyle(
+                                                fontFamily: 'BalooDa',
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    : Container(
+                                        child: Icon(
+                                          Icons.lock_outline,
+                                          color: Colors.purple,
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                ),
                               ),
                             ),
                             Spacer(
@@ -127,7 +136,7 @@ Widget itemRepositories(
                                       ),
                                     ),
                                     Spacer(
-                                      flex: 2,
+                                      flex: 1,
                                     ),
                                     Expanded(
                                       flex: 5,
@@ -161,7 +170,7 @@ Widget itemRepositories(
                                       ),
                                     ),
                                     Spacer(
-                                      flex: 2,
+                                      flex: 1,
                                     ),
                                     Expanded(
                                       flex: 5,
@@ -192,7 +201,7 @@ Widget itemRepositories(
                                       ),
                                     ),
                                     Spacer(
-                                      flex: 2,
+                                      flex: 1,
                                     ),
                                     Expanded(
                                       flex: 5,
@@ -230,7 +239,7 @@ Widget itemRepositories(
                                             ),
                                           ),
                                           Spacer(
-                                            flex: 2,
+                                            flex: 1,
                                           ),
                                           Expanded(
                                             flex: 5,
@@ -255,40 +264,43 @@ Widget itemRepositories(
                       Expanded(
                         flex: 8,
                         child: userState
-                            .user.repositories[index].languages.length > 1 ? LayoutBuilder(
-                          builder: (context, constraints) {
-                            return GridView.count(
-                              physics: ScrollPhysics(),
-                              crossAxisCount: 5,
-                              crossAxisSpacing: 13,
-                              children: List.generate(
-                                userState
-                                    .user.repositories[index].languages.length,
-                                (indexx) {
-                                  return Container(
-                                    margin:
-                                        EdgeInsets.only(left: 10, right: 10),
-                                    width: constraints.maxHeight / 1,
-                                    height: constraints.maxHeight / 1,
-                                    child: CacheSvgPicture(
-                                      '$URL_LANGUAGES${userState.user.repositories[index].languages[indexx]['name']}.svg',
+                                    .user.repositories[index].languages.length >
+                                1
+                            ? LayoutBuilder(
+                                builder: (context, constraints) {
+                                  return GridView.count(
+                                    physics: ScrollPhysics(),
+                                    crossAxisCount: 5,
+                                    crossAxisSpacing: 13,
+                                    children: List.generate(
+                                      userState.user.repositories[index]
+                                          .languages.length,
+                                      (indexx) {
+                                        return Container(
+                                          margin: EdgeInsets.only(
+                                              left: 10, right: 10),
+                                          width: constraints.maxHeight / 1,
+                                          height: constraints.maxHeight / 1,
+                                          child: CacheSvgPicture(
+                                            '$URL_LANGUAGES${userState.user.repositories[index].languages[indexx]['name']}.svg',
+                                          ),
+                                        );
+                                      },
                                     ),
                                   );
                                 },
+                              )
+                            : Container(
+                                child: Center(
+                                  child: Text(
+                                    'Nothing to show',
+                                    style: TextStyle(
+                                      fontFamily: 'BalooDa',
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ),
                               ),
-                            );
-                          },
-                        ) : Container(
-                          child: Center(
-                            child: Text(
-                              'Nothing to show',
-                              style: TextStyle(
-                                fontFamily: 'BalooDa',
-                                fontSize: 18,
-                              ),
-                            ),
-                          ),
-                        ),
                       ),
                     ],
                   ),
