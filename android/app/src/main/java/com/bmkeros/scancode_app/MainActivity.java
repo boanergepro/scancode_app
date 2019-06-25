@@ -1,4 +1,4 @@
-package com.example.scancode_app;
+package com.bmkeros.scancode_app;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
