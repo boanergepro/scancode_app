@@ -113,6 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               width: double.infinity,
                               color: Theme.of(context).primaryColor,
                               child: RaisedButton(
+                                color: Colors.purple[300],
                                 onPressed: () {
                                   _handleLogin(context, appState, userState);
                                 },
