@@ -2,51 +2,53 @@ import 'package:flutter/material.dart';
 import 'package:scancode_app/src/providers/user.dart';
 import 'package:scancode_app/src/widgets/item_list_languages.dart';
 
-Widget homeLanguages(UserProvider userState) {
-  return Column(
-    children: <Widget>[
-      Flexible(
-        flex: 2,
-        child: Row(
-          children: <Widget>[
-            Spacer(
-              flex: 1,
-            ),
-            Expanded(
-              flex: 15,
-              child: Text(
-                'Languages',
-                style: TextStyle(
-                  fontFamily: 'BalooDa',
-                  fontSize: 18,
-                  color: Colors.black87,
-                ),
+class HomeLanguages extends StatelessWidget {
+  UserProvider userState;
+
+  HomeLanguages({this.userState});
+
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
+    return Container(
+      height: size.height * 0.35,
+      child: Column(
+        children: <Widget>[
+          Container(
+            margin: EdgeInsets.only(left: 8),
+            width: size.width,
+            child: Text(
+              'Languages',
+              style: TextStyle(
+                fontFamily: 'BalooDa',
+                fontSize: 18,
+                color: Colors.black87,
               ),
             ),
-            Spacer(
-              flex: 20,
-            )
-          ],
-        ),
+          ),
+          //List Badges
+          Container(
+            height: size.height * 0.3,
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                return GridView.count(
+                  crossAxisCount: 4,
+                  children:
+                  List.generate(userState.user.languages.length, (index) {
+                    return itemListLanguages(
+                      context,
+                      constraints,
+                      userState,
+                      index,
+                    );
+                  }),
+                );
+              },
+            ),
+          ),
+        ],
       ),
-      //List Badges
-      Expanded(
-        flex: 6,
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            return Container(
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: userState.user.languages.length,
-                itemBuilder: (context, index) {
-                  return itemListLanguages(
-                      context, constraints, userState, index);
-                },
-              ),
-            );
-          },
-        ),
-      ),
-    ],
-  );
+    );
+  }
 }
