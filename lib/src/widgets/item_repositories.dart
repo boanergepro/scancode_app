@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:scancode_app/src/providers/user.dart';
 import 'package:scancode_app/src/api/end_points.dart';
 import 'package:scancode_app/src/widgets/bottom_sheet_repository.dart';
-import 'package:scancode_app/src/widgets/cache_svg_picture.dart';
+import 'package:scancode_app/src/widgets/custom_svg_picture.dart';
 
 Widget itemRepositories(
     BuildContext context, UserProvider userState, int index) {

@@ -12,10 +12,10 @@ class CustomSvgPicture extends StatelessWidget {
     return SvgPicture.network(
       url,
       placeholderBuilder: (BuildContext context) => Container(
-        padding: const EdgeInsets.all(30.0),
+        padding: const EdgeInsets.all(10.0),
         child: Center(
           child: SpinKitCubeGrid(
-            size: 20,
+            size: 25,
             color: Theme.of(context).primaryColor,
           ),
         ),
