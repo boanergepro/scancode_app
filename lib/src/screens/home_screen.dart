@@ -54,10 +54,7 @@ class HomeScreen extends StatelessWidget {
                       // Section header
                       HomeHeader(userState: userState,),
                       // Section badge
-                      Container(
-                        height: size.height * 0.2,
-                        child: homeBadges(userState),
-                      ),
+                      HomeBadges(userState: userState,),
                       //Languages
                       Container(
                         height: size.height * 0.2,

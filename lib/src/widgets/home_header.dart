@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:scancode_app/src/providers/user.dart';
 import 'package:scancode_app/src/widgets/avatar_picture.dart';
-//281
 
 class HomeHeader extends StatelessWidget {
   UserProvider userState;
