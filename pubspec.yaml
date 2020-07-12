@@ -16,6 +16,8 @@ dependencies:
   flutter_launcher_icons: "^0.7.0"
   flutter_svg: 0.17.4
   flutter_cache_manager: ^0.3.2
+  font_awesome_flutter: ^8.8.1
+
 flutter_icons:
   image_path: "assets/icon_scancode.png"
   android: true

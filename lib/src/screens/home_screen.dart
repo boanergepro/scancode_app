@@ -7,6 +7,7 @@ import 'package:scancode_app/src/providers/app.dart';
 import 'package:scancode_app/src/widgets/home_badges.dart';
 import 'package:scancode_app/src/widgets/home_languages.dart';
 import 'package:scancode_app/src/widgets/loading_overlay.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeScreen extends StatelessWidget {
   static final routerName = '/home';
@@ -14,8 +15,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double _screenHeight = MediaQuery.of(context).size.height;
-    double _screenWidth = MediaQuery.of(context).size.width;
+    Size size = MediaQuery.of(context).size;
     final userState = Provider.of<UserProvider>(context);
     final appState = Provider.of<AppProvider>(context);
 
@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
         centerTitle: true,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.menu),
+          icon: FaIcon(FontAwesomeIcons.bars),
           onPressed: () {
             //Open Drawer
             _scaffoldKey.currentState.openDrawer();
@@ -44,51 +44,28 @@ class HomeScreen extends StatelessWidget {
       body: Stack(
         children: <Widget>[
           Container(
-            height: _screenHeight,
-            width: _screenWidth,
+            height: size.height,
+            width: size.width,
             child: CustomScrollView(
               slivers: <Widget>[
-                // Section header
                 SliverList(
                   delegate: SliverChildListDelegate(
                     <Widget>[
+                      // Section header
+                      HomeHeader(userState: userState,),
+                      // Section badge
                       Container(
-                        height: _screenHeight / 2.5,
-                        child: Column(
-                          children: <Widget>[
-                            Expanded(
-                              flex: 3,
-                              child: homeHeader(userState),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                // Section badges
-                SliverList(
-                  delegate: SliverChildListDelegate(
-                    <Widget>[
-                      Container(
-                        height: _screenHeight / 5,
+                        height: size.height * 0.2,
                         child: homeBadges(userState),
                       ),
-                      Divider(),
+                      //Languages
+                      Container(
+                        height: size.height * 0.2,
+                        child: homeLanguages(userState),
+                      )
                     ],
                   ),
                 ),
-                SliverList(
-                  delegate: SliverChildListDelegate(
-                    <Widget>[
-                      Container(
-                        height: _screenHeight / 5,
-                        child: homeLanguages(userState),
-                      ),
-                      Divider(),
-                    ],
-                  ),
-                )
               ],
             ),
           ),

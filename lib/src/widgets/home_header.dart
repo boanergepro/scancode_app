@@ -1,280 +1,196 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:scancode_app/src/providers/user.dart';
 import 'package:scancode_app/src/widgets/avatar_picture.dart';
+//281
 
-Widget homeHeader(UserProvider userState) {
-  return Container(
-    color: Colors.purple,
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: <Widget>[
-        Expanded(
-          flex: 10,
-          child: Row(
+class HomeHeader extends StatelessWidget {
+  UserProvider userState;
+
+  HomeHeader({ this.userState });
+
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
+    return Container(
+      height: size.height * 0.4,
+      color: Colors.purple,
+      child: Column(
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              Spacer(flex: 1),
-              Expanded(
-                flex: 3,
-                child: Container(
-                  color: Colors.red,
-                  child: Column(
-                    children: <Widget>[
-                      Spacer(
-                        flex: 1,
+              Container(
+                width: size.width * 0.4,
+                height: size.height * 0.2,
+                child: AvatarPicture(userState.user.avatarUrl),
+              ),
+              //info
+              Container(
+                width: size.width * 0.5,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      userState.user.name,
+                      style: TextStyle(
+                        fontFamily: 'BalooDa',
+                        fontSize: 20,
+                        color: Colors.white,
                       ),
-                      Expanded(
-                        flex: 12,
-                        child: AvatarPicture(userState.user.avatarUrl),
+                    ),
+                    Text(
+                      userState.user.company,
+                      style: TextStyle(
+                        fontFamily: 'BalooDa',
+                        fontSize: 17,
+                        color: Colors.white,
                       ),
-                      Spacer(
-                        flex: 1,
+                    ),
+                    Text(
+                      userState.user.biography,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 5,
+                      textScaleFactor: 0.8,
+                      style: TextStyle(
+                        fontFamily: 'BalooDa',
+                        fontSize: 15,
+                        color: Colors.grey[300],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
-              Spacer(flex: 1),
-              Expanded(
-                flex: 6,
-                child: Container(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Expanded(
-                        flex: 3,
-                        child: Text(
-                          userState.user.name,
-                          style: TextStyle(
-                            fontFamily: 'BalooDa',
-                            fontSize: 17,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                      Spacer(flex: 1),
-                      Expanded(
-                        flex: 8,
-                        child: Text(
-                          userState.user.biography,
-                          overflow: TextOverflow.fade,
-                          textScaleFactor: 0.8,
-                          style: TextStyle(
-                            fontFamily: 'BalooDa',
-                            fontSize: 15,
-                            color: Colors.grey[300],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Spacer(flex: 1),
             ],
           ),
-        ),
-        Spacer(flex: 1),
-        Expanded(
-          flex:6,
-          child: Container(
-            child: Row(
-              children: <Widget>[
-                Spacer(
-                  flex: 1,
+          SizedBox(
+            height: 10,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              Item(
+                icon: FaIcon(
+                  FontAwesomeIcons.mapMarkedAlt,
                 ),
-                Expanded(
-                  flex: 3,
-                  child: Row(
-                    children: <Widget>[
-                      Flexible(
-                        flex: 2,
-                        child: Icon(Icons.place),
-                      ),
-                      Spacer(
-                        flex: 1,
-                      ),
-                      Expanded(
-                        flex: 5,
-                        child: Text(
-                          userState.user.location,
-                          textScaleFactor: 0.8,
-                          style: TextStyle(
-                            fontFamily: 'BalooDa',
-                            fontSize: 15,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                title: userState.user.location,
+              ),
+              Item(
+                icon: FaIcon(
+                  FontAwesomeIcons.chartLine
                 ),
-                Spacer(
-                  flex: 1,
+                title: userState.user.level,
+              ),
+              Item(
+                icon: FaIcon(
+                  FontAwesomeIcons.at
                 ),
-                Expanded(
-                  flex: 8,
-                  child: Container(
-                    child: Row(
-                      children: <Widget>[
-                        Flexible(
-                          flex: 2,
-                          child: Icon(Icons.multiline_chart),
-                        ),
-                        Spacer(
-                          flex: 1,
-                        ),
-                        Expanded(
-                          flex: 3,
-                          child: Text(
-                            userState.user.level,
-                            textScaleFactor: 0.8,
-                            style: TextStyle(
-                              fontFamily: 'BalooDa',
-                              fontSize: 15,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                        Spacer(
-                          flex: 1,
-                        ),
-                        Flexible(
-                          flex: 2,
-                          child: Icon(Icons.alternate_email),
-                        ),
-                        Spacer(
-                          flex: 1,
-                        ),
-                        Expanded(
-                          flex: 6,
-                          child: Text(
-                            userState.user.username,
-                            textScaleFactor: 0.8,
-                            style: TextStyle(
-                              fontFamily: 'BalooDa',
-                              fontSize: 15,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ],
+                title: userState.user.username,
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              Column(
+                children: <Widget>[
+                  Text(
+                    userState.user.repositoryCount.toString(),
+                    textScaleFactor: 0.8,
+                    style: TextStyle(
+                      fontFamily: 'BalooDa',
+                      fontSize: 25,
+                      color: Colors.white,
                     ),
                   ),
-                ),
-              ],
-            ),
+                  Text(
+                    'Repository',
+                    textScaleFactor: 0.8,
+                    style: TextStyle(
+                      fontFamily: 'BalooDa',
+                      fontSize: 18,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+              Column(
+                children: <Widget>[
+                  Text(
+                    userState.user.experience['total'].toString(),
+                    textScaleFactor: 0.8,
+                    style: TextStyle(
+                      fontFamily: 'BalooDa',
+                      fontSize: 25,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Text(
+                    'Experience',
+                    textScaleFactor: 0.8,
+                    style: TextStyle(
+                      fontFamily: 'BalooDa',
+                      fontSize: 18,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+              Column(
+                children: <Widget>[
+                  Text(
+                    userState.user.activeMonthCount.toString(),
+                    textScaleFactor: 0.8,
+                    style: TextStyle(
+                      fontFamily: 'BalooDa',
+                      fontSize: 25,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Text(
+                    'Active month',
+                    textScaleFactor: 0.8,
+                    style: TextStyle(
+                      fontFamily: 'BalooDa',
+                      fontSize: 18,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              )
+            ],
           ),
-        ),
-        Spacer(flex: 1),
-        Expanded(
-          flex: 6,
-          child: Container(
-            child: Row(
-              children: <Widget>[
-                Expanded(
-                  flex: 4,
-                  child: Column(
-                    children: <Widget>[
-                      Expanded(
-                        flex: 2,
-                        child: Text(
-                          userState.user.repositoryCount.toString(),
-                          textScaleFactor: 0.8,
-                          style: TextStyle(
-                            fontFamily: 'BalooDa',
-                            fontSize: 25,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                      Flexible(
-                        flex: 2,
-                        child: Text(
-                          'Repository',
-                          textScaleFactor: 0.8,
-                          style: TextStyle(
-                            fontFamily: 'BalooDa',
-                            fontSize: 18,
-                            color: Colors.white,
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Spacer(
-                  flex: 1,
-                ),
-                Expanded(
-                  flex: 4,
-                  child: Column(
-                    children: <Widget>[
-                      Expanded(
-                        flex: 2,
-                        child: Text(
-                          userState.user.experience['total'].toString(),
-                          textScaleFactor: 0.8,
-                          style: TextStyle(
-                            fontFamily: 'BalooDa',
-                            fontSize: 25,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                      Flexible(
-                        flex: 2,
-                        child: Text(
-                          'Experience',
-                          textScaleFactor: 0.8,
-                          style: TextStyle(
-                            fontFamily: 'BalooDa',
-                            fontSize: 18,
-                            color: Colors.white,
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Spacer(
-                  flex: 1,
-                ),
-                Expanded(
-                  flex: 4,
-                  child: Column(
-                    children: <Widget>[
-                      Expanded(
-                        flex: 2,
-                        child: Text(
-                          userState.user.activeMonthCount.toString(),
-                          textScaleFactor: 0.8,
-                          style: TextStyle(
-                            fontFamily: 'BalooDa',
-                            fontSize: 25,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                      Flexible(
-                        flex: 2,
-                        child: Text(
-                          'Active month',
-                          textScaleFactor: 0.8,
-                          style: TextStyle(
-                            fontFamily: 'BalooDa',
-                            fontSize: 18,
-                            color: Colors.white,
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ],
-            ),
+        ],
+      ),
+    );;
+  }
+}
+
+class Item extends StatelessWidget {
+  FaIcon icon;
+  String title;
+  Item({this.icon, this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        icon,
+        SizedBox(width: 10,),
+        Text(
+          title,
+          textScaleFactor: 0.8,
+          style: TextStyle(
+            fontFamily: 'BalooDa',
+            fontSize: 20,
+            color: Colors.white,
           ),
         )
       ],
-    ),
-  );
+    );
+  }
 }
