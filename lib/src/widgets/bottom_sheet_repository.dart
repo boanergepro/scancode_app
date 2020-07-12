@@ -58,7 +58,7 @@ void showBottomSheetRepository(
                         backgroundColor: Colors.transparent,
                         child: userState.user.repositories[index].private
                             ? Container(
-                                child: CacheSvgPicture(
+                                child: CustomSvgPicture(
                                   '$URL_INTEGRATIONS${userState.user.repositories[index].source.toLowerCase()}.svg',
                                 ),
                               )

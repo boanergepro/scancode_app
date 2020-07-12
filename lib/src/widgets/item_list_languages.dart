@@ -15,7 +15,7 @@ Widget itemListLanguages(BuildContext context, BoxConstraints constraints,
       width: constraints.maxHeight / 1,
       height: constraints.maxHeight / 1,
       //  '$URL_LANGUAGES${userState.user.languages[index]['name']}.svg',
-      child: CacheSvgPicture(
+      child: CustomSvgPicture(
           '$URL_LANGUAGES${userState.user.languages[index]['name']}.svg'),
     ),
   );

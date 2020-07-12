@@ -86,12 +86,10 @@ packages:
   flutter_svg:
     dependency: "direct main"
     description:
-      path: "."
-      ref: "0.12.4"
-      resolved-ref: bc32687658804c1f52f74e10af25ff1d5c987b88
-      url: "https://github.com/boanergepro/flutter_svg.git"
-    source: git
-    version: "0.12.4"
+      name: flutter_svg
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.17.4"
   http:
     dependency: "direct main"
     description:

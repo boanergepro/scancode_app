@@ -14,10 +14,7 @@ dependencies:
   flutter_spinkit: ^3.1.0
   provider: 2.0.1+1
   flutter_launcher_icons: "^0.7.0"
-  flutter_svg:
-    git:
-      url: https://github.com/boanergepro/flutter_svg.git
-      ref: 0.12.4
+  flutter_svg: 0.17.4
   flutter_cache_manager: ^0.3.2
 flutter_icons:
   image_path: "assets/icon_scancode.png"

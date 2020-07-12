@@ -9,6 +9,6 @@ Widget itemListBadges(
     margin: EdgeInsets.only(left: 10, right: 10),
     width: constraints.maxHeight / 1,
     height: constraints.maxHeight / 1,
-    child: CacheSvgPicture('$URL_BADGES${userState.user.badges[index]}.svg'),
+    child: CustomSvgPicture('$URL_BADGES${userState.user.badges[index]}.svg'),
   );
 }

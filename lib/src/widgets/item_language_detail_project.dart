@@ -11,7 +11,7 @@ Widget itemLanguagesDetailProject(UserProvider userState, int index, int i) {
     leading: CircleAvatar(
       backgroundColor: Colors.transparent,
       child: Container(
-        child: CacheSvgPicture(
+        child: CustomSvgPicture(
           '$URL_LANGUAGES${userState.user.repositories[index].languages[i]['name']}.svg',
         ),
       ),

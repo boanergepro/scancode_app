@@ -40,7 +40,7 @@ Widget itemRepositories(
                               flex: 2,
                               child: userState.user.repositories[index].private
                                   ? Container(
-                                      child: CacheSvgPicture(
+                                      child: CustomSvgPicture(
                                         '$URL_INTEGRATIONS${userState.user.repositories[index].source.toLowerCase()}.svg',
                                       ),
                                     )
@@ -281,7 +281,7 @@ Widget itemRepositories(
                                               left: 10, right: 10),
                                           width: constraints.maxHeight / 1,
                                           height: constraints.maxHeight / 1,
-                                          child: CacheSvgPicture(
+                                          child: CustomSvgPicture(
                                             '$URL_LANGUAGES${userState.user.repositories[index].languages[indexx]['name']}.svg',
                                           ),
                                         );
